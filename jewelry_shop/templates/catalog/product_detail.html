@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Product — Jewelry Shop{% endblock %}
+{% block content %}
+  <h1>Product page (stub)</h1>
+  <p>Detailed product information will be shown here.</p>
+
+  {% if product %}
+    <p><strong>Debug:</strong> current slug = <code>{{ product.slug }}</code></p>
+  {% endif %}
+{% endblock %}
