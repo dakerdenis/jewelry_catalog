@@ -1,6 +1,36 @@
 {% extends "base.html" %}
 {% block title %}Catalog — Jewelry Shop{% endblock %}
 {% block content %}
-  <h1>Catalog (stub)</h1>
-  <p>All products with filters, sorting and pagination will be here.</p>
+  <h1>Catalog</h1>
+
+  {% if products %}
+    <ul style="list-style:none; padding:0; display:grid; gap:12px;">
+      {% for p in products %}
+        <li style="display:flex; align-items:center; gap:12px; border:1px solid #eee; padding:8px 12px;">
+          {# первая фотка товара, если есть #}
+          {% with img=p.images.all|first %}
+            {% if img %}
+              <img src="{{ img.image.url }}" alt="{{ p.name }}" style="height:64px; width:auto; border-radius:6px;">
+            {% else %}
+              <div style="height:64px; width:64px; background:#f2f2f2; display:flex; align-items:center; justify-content:center; border-radius:6px;">—</div>
+            {% endif %}
+          {% endwith %}
+
+          <div>
+            <div>
+              <a href="{% url 'catalog:detail' slug=p.slug %}"><strong>{{ p.name }}</strong></a>
+            </div>
+            <div>
+              {{ p.category.name }} — {{ p.price }} {{ p.currency }}
+            </div>
+            <div style="font-size:12px; color:#777;">
+              slug: {{ p.slug }}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No products yet.</p>
+  {% endif %}
 {% endblock %}
