@@ -1,8 +1,9 @@
 # catalog/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Collection, Category, Product, ProductImage
 
+from django import forms  # <-- добавь импорт
+from .models import Collection, Category, Product, ProductImage, LandingConfig 
 
 @admin.register(Collection)
 class CollectionAdmin(admin.ModelAdmin):
@@ -102,3 +103,25 @@ class ProductAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         return qs.prefetch_related("images")
+
+class LandingConfigAdminForm(forms.ModelForm):
+    class Meta:
+        model = LandingConfig
+        fields = ["goods"]
+
+    def clean_goods(self):
+        goods = self.cleaned_data.get("goods")
+        if goods and goods.count() > 2:
+            raise forms.ValidationError("You can select at most 2 products.")
+        return goods
+
+
+@admin.register(LandingConfig)
+class LandingConfigAdmin(admin.ModelAdmin):
+    form = LandingConfigAdminForm
+    filter_horizontal = ("goods",)  # удобный виджет выбора
+    list_display = ("__str__", "get_goods_count")
+
+    def get_goods_count(self, obj):
+        return obj.goods.count()
+    get_goods_count.short_description = "Selected products"

@@ -264,7 +264,7 @@
 .goods__element-image img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .goods__element-desc {
@@ -277,7 +277,8 @@
   font-weight: 500;
   font-style: Medium;
   font-size: 60px;
-  line-height: 105px;
+  line-height: 68px;
+  margin-bottom: 20px;
   letter-spacing: 0%;
 }
 .goods__element-text {

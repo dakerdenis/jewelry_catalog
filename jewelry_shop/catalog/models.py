@@ -134,3 +134,22 @@ class ProductImage(TimestampedModel):
 
     class Meta:
         ordering = ["id"]
+        
+        
+        
+
+class LandingConfig(TimestampedModel):
+    goods = models.ManyToManyField(
+        Product,
+        blank=True,
+        related_name="featured_on_landing",
+        help_text="Pick up to 2 products to display on the landing page."
+    )
+
+    class Meta:
+        verbose_name = "Landing configuration"
+        verbose_name_plural = "Landing configuration"  # будет один список в админке
+
+    def __str__(self) -> str:
+        return "Landing configuration"
+

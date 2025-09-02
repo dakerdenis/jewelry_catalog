@@ -84,50 +84,64 @@
     </div>
 
     {# LANDING GOODS #}
+    {# LANDING GOODS #}
     <div class="landing__goods">
       <div class="goods__wrapper">
-        {# element 1 #}
-        <div class="goods__element">
-          <div class="goods__element-image">
-            <a href="#"><img src="{% static 'img/landing/ring2.png' %}" alt="" srcset="" /></a>
-          </div>
-          <div class="goods__element-desc">
-            <div class="goods__element-name">Gold Bracelet</div>
-            <div class="goods__element-text">Lorem ipsum dolor sit amet consectetur. Dolor et volutpat in non. Luctus sit libero urna viverra sed non dui elementum Dolor et volutpat in non. Luctus sit libero urna viverra .</div>
-            <div class="goods__element-price">
-              <span>680.90</span> $
-            </div>
-          </div>
-        </div>
-
-        {# element 2 #}
-        <div class="goods__element">
-          <div class="goods__element-desc">
-            <div class="goods__element-name">Gold Bracelet</div>
-            <div class="goods__element-text">Lorem ipsum dolor sit amet consectetur. Dolor et volutpat in non. Luctus sit libero urna viverra sed non dui elementum Dolor et volutpat in non. Luctus sit libero urna viverra .</div>
-            <div class="goods__element-price">
-              <span>680.90</span> $
-            </div>
-          </div>
-          <div class="goods__element-image">
-            <a href="#"><img src="{% static 'img/landing/ring3.png' %}" alt="" srcset="" /></a>
-          </div>
-        </div>
-
-
+        {% if landing_goods %}
+          {% for p in landing_goods %}
+            {% with img=p.images.all|first %}
+              {# Чередуем раскладку: для 1-го — картинка слева, для 2-го — справа #}
+              {% if forloop.counter|divisibleby:2 %}
+                <div class="goods__element">
+                  <div class="goods__element-desc">
+                    <div class="goods__element-name">{{ p.name }}</div>
+                    <div class="goods__element-text">{{ p.description|default:'' }}</div>
+                    <div class="goods__element-price">
+                      <span>{{ p.price }}</span> $
+                    </div>
+                  </div>
+                  <div class="goods__element-image">
+                    <a href="{{ p.get_absolute_url }}">
+                      {% if img %}
+                        <img src="{{ img.image.url }}" alt="{{ p.name }}" />
+                      {% else %}
+                        <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
+                      {% endif %}
+                    </a>
+                  </div>
+                </div>
+              {% else %}
+                <div class="goods__element">
+                  <div class="goods__element-image">
+                    <a href="{{ p.get_absolute_url }}">
+                      {% if img %}
+                        <img src="{{ img.image.url }}" alt="{{ p.name }}" />
+                      {% else %}
+                        <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
+                      {% endif %}
+                    </a>
+                  </div>
+                  <div class="goods__element-desc">
+                    <div class="goods__element-name">{{ p.name }}</div>
+                    <div class="goods__element-text">{{ p.description|default:'' }}</div>
+                    <div class="goods__element-price">
+                      <span>{{ p.price }}</span> $
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endwith %}
+          {% endfor %}
+        {% endif %}
       </div>
     </div>
 
     {# LANDING CONCEPT #}
     <div class="landind__concept">
       <div class="concept__wrapper">
-        <div class="concept__image">
-         
-        </div>
+        <div class="concept__image"></div>
 
-        <div class="concept__desc">
-
-        </div>
+        <div class="concept__desc"></div>
       </div>
     </div>
 

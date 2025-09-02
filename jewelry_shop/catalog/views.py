@@ -1,10 +1,23 @@
 # catalog/views.py
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Prefetch
-from .models import Collection, Product, ProductImage
+from .models import Collection, Product, ProductImage, LandingConfig
 
 def landing_view(request):
-    return render(request, "catalog/landing.html", {})
+    cfg = (
+        LandingConfig.objects
+        .prefetch_related("goods__images")  # чтобы не было N+1 для картинок
+        .first()
+    )
+    landing_goods = []
+    if cfg:
+        landing_goods = (
+            cfg.goods
+            .filter(is_active=True)
+            .prefetch_related("images")
+        )[:2]  # страховка: не больше двух
+    return render(request, "catalog/landing.html", {"landing_goods": landing_goods})
+
 
 def product_list_view(request):
     # Все активные товары + категории + фотки (для превью)
