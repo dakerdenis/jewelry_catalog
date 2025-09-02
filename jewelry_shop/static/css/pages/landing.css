@@ -1,5 +1,300 @@
-.landing__wrapper{
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --row-h: 164px; /* высота всего блока */
+  --img-h: 95px; /* фактическая высота SVG */
+  --gap: 50px; /* расстояние между картинками */
+  --speed: 30s; /* больше — медленнее */
+}
+
+/********************/
+
+.landing__wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.landing__main {
+  height: 665px;
+  width: 100%;
+  position: relative;
+}
+.landing__main-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.landing__main-back img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.landing__main-text {
+  position: absolute;
+  width: 486px;
+  height: 256px;
+  top: 80px;
+  right: 50px;
+}
+.landing__main-text h2 {
+  font-family: 'Playfair Display', serif;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 48px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  margin-bottom: 20px;
+}
+.landing__main-text p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #fff;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 20px;
+
+  line-height: 32px;
+  letter-spacing: 0%;
+  text-align: right;
+  margin-bottom: 20px;
+}
+.landing__main-text p:first-child {
+}
+
+/*****LANDING ANIMATION*******/
+/*****LANDING ANIMATION*******/
+/*****LANDING ANIMATION*******/
+/* ВНЕШНИЙ КОНТЕЙНЕР */
+.landing__animation {
+  background: #1e1e1e;
+  height: var(--row-h);
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  place-items: center; /* вертикальное выравнивание внутри */
+}
+
+/* ДОРОЖКА, КОТОРУЮ ДВИГАЕМ */
+.landing__animation-track {
+  display: flex;
+  width: max-content; /* ширина = сумме содержимого */
+  will-change: transform;
+  animation: landing-marquee var(--speed) linear infinite;
+}
+
+/* ОДНА ПАРТИЯ КАРТИНОК */
+.landing__animation-set {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+/* САМИ КАРТИНКИ */
+.landing__animation img {
+  height: var(--img-h);
+  width: auto;
+  flex: 0 0 auto; /* запретить ужимание/перенос */
+  display: block;
+  margin: 0;
+}
+
+/* СКРОЛЛ ВЛЕВО НА ПОЛОВИНУ ШИРИНЫ (т.к. 2 одинаковых набора подряд) */
+@keyframes landing-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* если у пользователя выключены анимации */
+@media (prefers-reduced-motion: reduce) {
+  .landing__animation-track {
+    animation: none;
+  }
+}
+/********LANDING OUR STORY*********/
+.landing__story {
+  width: 100%;
+  height: 500px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.story__wrapper {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.story__image {
+  width: 478px;
+  height: 100%;
+  margin-right: 68px;
+}
+.story__image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.story__content {
+  margin-left: 68px;
+  height: 100%;
+  width: 478px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  text-align: left;
+}
+
+.story__content h2 {
+  font-family: 'Noto Serif', serif;
+
+  font-size: 34px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-bottom: 27px;
+}
+.story__content p {
+  margin-top: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+
+  line-height: 32px;
+  letter-spacing: 0%;
+}
+
+/*******LANDING COLLECTIONS**********/
+
+.landing__collections {
+  width: 100%;
+  height: 450px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.collections__wrapper {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.collections__text {
+  width: 600px;
+  height: 100%;
+}
+.collections__text h2 {
+  font-family: 'Noto Serif', serif;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 75px;
+  letter-spacing: 0%;
+}
+.collections__text-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 110px;
+  margin-top: 25px;
+}
+.collections__text-container p {
+  display: block;
+  font-family: 'Noto Serif', serif;
+
+  font-size: 34px;
+  margin-bottom: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  margin-right: 40px;
+  cursor: pointer;
+}
+.collections__image {
+}
+
+/************LANDING GOODS******************/
+/************LANDING GOODS******************/
+/************LANDING GOODS******************/
+.landing__goods {
+  width: 100%;
+  min-height: 400px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.goods__wrapper {
+  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.goods__element {
+
+  height: 450px;
+  display: flex;
+
+}
+.goods__element-image {
+  height: 435px;
+  width: 630px;
+  margin-right: 15px;
+}
+.goods__element-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.goods__element-desc {
+  height: 430px;
+  width: 452px;
+  margin-left: 15px;
+}
+.goods__element-name {
+  font-family: 'Noto Serif', serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 60px;
+  line-height: 105px;
+  letter-spacing: 0%;
+}
+.goods__element-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 40px;
+  letter-spacing: 0%;
+}
+.goods__element-price {
+  font-family: 'Noto Serif', serif;
+font-weight: 500;
+font-style: Medium;
+font-size: 34px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+
 }

@@ -16,10 +16,8 @@
   </head>
   <body>
     <div class="main__wrapper">
-      {# HEADER NAVIGATION #}
+      {# HEADER MENU #}
       <header>
-        {# header block1 #}
-        <div class="header__about">
           <p>OUSVOW JEWELRY</p>
           <div class="header__about-menu">
             <div class="header__about-search">
@@ -29,9 +27,15 @@
               <img src="{% static 'img/common/textalign-justifyright.svg' %}" alt="Burger icon" />
             </div>
           </div>
-        </div>
       </header>
-
+      {# NAVIGTION #}
+      <nav>
+        <div class="navigation__wrapper">
+          <a class="navigation__element">Products</a>
+          <a class="navigation__element">Collections</a>
+          <a class="navigation__element">Contact Us</a>
+        </div>
+      </nav>
       {# MAIN CONTENT HERE #}
       {% block content %}
 
