@@ -1,6 +1,68 @@
 {% extends "base.html" %}
-{% block title %}Landing — Jewelry Shop{% endblock %}
+{% load static %}
+
+{% block title %} 
+  Landing — Jewelry Shop
+{% endblock %}
+
+{% block body_class %}
+  page-landing
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/pages/landing.css' %}" rel="stylesheet" />
+{% endblock %}
+
 {% block content %}
-  <h1>Landing (stub)</h1>
-  <p>Here we will show featured collections with photos.</p>
+  {##   lANDING PAGE WRAPPER #}
+  <div class="landing__wrapper">
+    
+    {# LANDING MAIN SCREEEN #}
+    <div class="landing__main">
+
+    </div>
+
+    {# LANDING  ANIMATIONS #}
+    <div class="landing__animation">
+
+    </div>
+
+
+    {# LANDING   OUR STORY #}
+    <div class="landing__story">
+
+    </div>
+
+
+    {# LANDING COLLECTIONS #}
+    <div class="landing__collections">
+
+    </div>
+
+    {# LANDING GOODS  #}
+    <div class="landing__goods">
+
+    </div>
+
+    {# LANDING CONCEPT #}
+    <div class="landind__concept">
+
+    </div>
+
+    {# LANDING GOLD #}
+    <div class="landing__gold">
+
+    </div>
+
+    {# LANDING VIDEO #}
+    <div class="landing__video">
+
+    </div>
+
+    {# LANDING SIGN UP #}
+    <div class="langind__sing">
+
+    </div>
+
+  </div>
 {% endblock %}

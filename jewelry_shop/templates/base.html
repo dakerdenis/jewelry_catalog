@@ -1,28 +1,53 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>{% block title %}Jewelry Shop{% endblock %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="{% url 'catalog:landing' %}">Landing</a> |
-      <a href="{% url 'catalog:list' %}">Catalog</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      {% block title %}
+        Jewelry Shop
+      {% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    {% block extra_css %}
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    {% endblock %}
+  </head>
+  <body>
+    <div class="main__wrapper">
+      {# HEADER NAVIGATION #}
+      <header>
+        {# header block1 #}
+        <div class="header__about">
+          <p>OUSVOW JEWELRY</p>
+          <div class="header__about-menu">
+            <div class="header__about-search">
+              <img src="{% static 'img/common/search-normal.svg' %}" alt="Search icon" />
+            </div>
+            <div class="header__about-burger">
+              <img src="{% static 'img/common/textalign-justifyright.svg' %}" alt="Burger icon" />
+            </div>
+          </div>
+        </div>
+      </header>
 
-  <footer>
-    <small>© Jewelry Shop</small>
-  </footer>
+      {# MAIN CONTENT HERE #}
+      {% block content %}
 
-  <script src="{% static 'js/main.js' %}"></script>
-</body>
+      {% endblock %}
+
+      {# FOOTER #}
+      <footer>
+        <small>© Jewelry Shop</small>
+      </footer>
+    </div>
+
+    <!-- общий js -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <!-- сюда страницы подставят свой js -->
+    {% block extra_js %}
+
+    {% endblock %}
+  </body>
 </html>
