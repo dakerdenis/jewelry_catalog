@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
   --row-h: 164px; /* высота всего блока */
@@ -251,10 +252,8 @@
   align-items: center;
 }
 .goods__element {
-
   height: 450px;
   display: flex;
-
 }
 .goods__element-image {
   height: 435px;
@@ -291,11 +290,85 @@
 }
 .goods__element-price {
   font-family: 'Noto Serif', serif;
-font-weight: 500;
-font-style: Medium;
-font-size: 34px;
-leading-trim: NONE;
-line-height: 100%;
-letter-spacing: 0%;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 34px;
 
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+/*******LANDING CONCEPT**********/
+.landind__concept {
+  width: 100%;
+  height: 638px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e1e1e;
+}
+.concept__wrapper {
+  width: 1320px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.concept__image {
+  width: 550px;
+  height: 511px;
+}
+.concept__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.concept__desc {
+  width: 650px;
+  color: #fff;
+}
+.concept__desc p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 30px;
+
+  line-height: 60px;
+  letter-spacing: -2px;
+}
+
+.concept__desc h2 {
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 50px;
+
+  line-height: 60px;
+  letter-spacing: -2px;
+}
+.concept__desc div {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 25px;
+  line-height: 40px;
+  letter-spacing: -2px;
+}
+.concept__desc button {
+  width: 148px;
+  height: 52px;
+  background-color: #ffffff00;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-top: 35px;
 }
