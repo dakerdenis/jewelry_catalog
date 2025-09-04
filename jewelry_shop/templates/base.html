@@ -10,6 +10,8 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css">
+
     {% block extra_css %}
 
     {% endblock %}
@@ -89,5 +91,10 @@
     {% block extra_js %}
 
     {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3"></script>
+<script>
+  const player = new Plyr('#plyr', { youtube: { rel: 0, modestbranding: 1 }});
+</script>
   </body>
 </html>

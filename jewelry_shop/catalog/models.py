@@ -4,7 +4,7 @@ from django.utils.text import slugify
 from django.core.validators import MinValueValidator
 from decimal import Decimal
 from django.urls import reverse
-
+from django.core.exceptions import ValidationError
 
 class TimestampedModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
@@ -153,3 +153,36 @@ class LandingConfig(TimestampedModel):
     def __str__(self) -> str:
         return "Landing configuration"
 
+
+
+
+class LandingThreeItem(TimestampedModel):
+    """
+    Один элемент секции '3 товара' на главной.
+    Выбранный продукт + его позиция (1..3) внутри секции.
+    """
+    config = models.ForeignKey(
+        LandingConfig,
+        on_delete=models.CASCADE,
+        related_name="three_products",
+    )
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.PROTECT,
+        limit_choices_to={"is_active": True},
+        related_name="featured_in_three",
+    )
+    position = models.PositiveSmallIntegerField(
+        choices=[(1, "1"), (2, "2"), (3, "3")],
+        help_text="Position in the 3-items block (1..3)",
+    )
+
+    class Meta:
+        unique_together = (
+            ("config", "position"),  # позиция уникальна
+            ("config", "product"),   # продукт не повторяется
+        )
+        ordering = ["position"]
+
+    def __str__(self):
+        return f"#{self.position}: {self.product.name}"

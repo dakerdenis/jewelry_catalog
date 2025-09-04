@@ -165,31 +165,59 @@
       </div>
     </div>
 
-    {# LANDING VIDEO #}
-    <div class="landing__video"></div>
 
-    {# LANDING 3 Goods #}
-    <div class="landing__3element">
-      <div class="elements__wrapper">
-        {# -- -- #}
-        <div class="elements-element">
-            <div class="elements-img">
-              <img src="" alt="">
-            </div>
-            <div class="elements-desc">
-              <div class="elements-name">
-                Lorem Ipsum
-              </div>
-              <div class="elements-price">
-                50$
-              </div>
-            </div>
-        </div>
-        {# -- -- #}
+
+    <section class="hero-video">
+      <div class="hero-video__bg">
+        <!-- img src="{% static 'img/landing/hero.jpg' %}" alt="" / -->
+      </div>
+
+      <button class="hero-video__play" id="openVideo" aria-label="Play video" data-yturl="https://youtube.com/shorts/zpHBbHwFHDM?si=0cEXtULe4k5jUnvT">
+        <img src="{% static 'img/landing/button-video.svg' %}" alt="" srcset="">
+        
+      </button>
+
+      <div class="hero-video__text">
+        <h2>Lorem Ipsum</h2>
+        <p>The definitive selection to celebrate in style</p>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="video-modal" id="videoModal" hidden>
+      <div class="video-modal__overlay" data-close></div>
+      <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-label="Video">
+        <button class="video-modal__close" data-close aria-label="Close">×</button>
+        <div class="video-modal__player" id="videoPlayer"></div>
       </div>
     </div>
 
-
+    {# LANDING 3 Goods #}
+    {% if landing_three %}
+      <div class="landing__3element">
+        <div class="elements__wrapper">
+          {% for p in landing_three %}
+            <div class="elements-element">
+              <div class="elements-img">
+                {% with img=p.images.all|first %}
+                  <a href="{{ p.get_absolute_url }}">
+                    {% if img %}
+                      <img src="{{ img.image.url }}" alt="{{ p.name }}" />
+                    {% else %}
+                      <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
+                    {% endif %}
+                  </a>
+                {% endwith %}
+              </div>
+              <div class="elements-desc">
+                <div class="elements-name">{{ p.name }}</div>
+                <div class="elements-price">{{ p.price }} $</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
 
     {# LANDING SIGN UP #}
     <div class="langind__sing">
@@ -200,15 +228,12 @@
         </div>
         <div class="sing__field">
           <form action="#">
-            <input placeholder="Enter email address" type="text">
+            <input placeholder="Enter email address" type="text" />
             <button>SING UP</button>
           </form>
         </div>
       </div>
     </div>
-
-
-
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -218,9 +243,72 @@
       }
     })
   </script>
+
+  <script>
+    ;(function () {
+      const btn = document.getElementById('openVideo')
+      const modal = document.getElementById('videoModal')
+      const slot = document.getElementById('videoPlayer')
+    
+      if (!btn || !modal || !slot) return
+    
+      // Универсально выдергиваем ID из watch/shorts/youtu.be
+      function getYouTubeId(url) {
+        try {
+          const u = new URL(url)
+          if (u.hostname.includes('youtu.be')) return u.pathname.slice(1)
+          if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/shorts/')[1].split('/')[0]
+          if (u.searchParams.get('v')) return u.searchParams.get('v')
+          const m = url.match(/(?:embed|shorts|watch\/|v\/)([A-Za-z0-9_-]{11})/)
+          return m ? m[1] : null
+        } catch {
+          return null
+        }
+      }
+    
+      function buildSrc(id) {
+        const p = new URLSearchParams({
+          autoplay: 1,
+          playsinline: 1,
+          modestbranding: 1,
+          rel: 0
+          // Чтобы точно зациклилось (если нужно): loop=1&playlist=<ID>
+          // loop: 1, playlist: id
+        })
+        return `https://www.youtube-nocookie.com/embed/${id}?${p.toString()}`
+      }
+    
+      function openModal() {
+        const id = getYouTubeId(btn.dataset.yturl || '')
+        if (!id) return
+    
+        const iframe = document.createElement('iframe')
+        iframe.src = buildSrc(id)
+        iframe.title = 'YouTube video'
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture'
+        iframe.allowFullscreen = true
+        iframe.style.width = '100%'
+        iframe.style.height = '100%'
+        slot.innerHTML = ''
+        slot.appendChild(iframe)
+    
+        modal.hidden = false
+        document.body.style.overflow = 'hidden'
+      }
+    
+      function closeModal() {
+        modal.hidden = true
+        slot.innerHTML = '' // удаляем iframe, чтобы остановить воспроизведение
+        document.body.style.overflow = ''
+      }
+    
+      btn.addEventListener('click', openModal)
+      modal.addEventListener('click', (e) => {
+        if (e.target.hasAttribute('data-close')) closeModal()
+      })
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) closeModal()
+      })
+    })()
+  </script>
 {% endblock %}
-
-
-
-
-

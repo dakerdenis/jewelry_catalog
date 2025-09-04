@@ -1,10 +1,13 @@
 # catalog/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
+from django.forms.models import BaseInlineFormSet
 
 from django import forms  # <-- добавь импорт
-from .models import Collection, Category, Product, ProductImage, LandingConfig 
-
+from .models import (
+    Collection, Category, Product, ProductImage,
+    LandingConfig, LandingThreeItem
+)
 @admin.register(Collection)
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ("name", "quick_link")
@@ -116,12 +119,67 @@ class LandingConfigAdminForm(forms.ModelForm):
         return goods
 
 
+
+class LimitThreeInlineFormset(BaseInlineFormSet):
+    def clean(self):
+        super().clean()
+        active_forms = [
+            f for f in self.forms
+            if getattr(f, "cleaned_data", None)
+            and not f.cleaned_data.get("DELETE", False)
+        ]
+        count = len(active_forms)
+        if count < 1:
+            raise forms.ValidationError("Select at least 1 product for the 3-items block.")
+        if count > 3:
+            raise forms.ValidationError("Select no more than 3 products for the 3-items block.")
+
+        positions = set()
+        products = set()
+        for f in active_forms:
+            pos = f.cleaned_data.get("position")
+            prod = f.cleaned_data.get("product")
+            if pos in positions:
+                raise forms.ValidationError("Positions must be unique (1, 2, 3).")
+            if prod in products:
+                raise forms.ValidationError("Products must be unique.")
+            positions.add(pos)
+            products.add(prod)
+
+
+class LandingThreeItemInline(admin.TabularInline):
+    model = LandingThreeItem
+    extra = 3
+    min_num = 1
+    max_num = 3
+    formset = LimitThreeInlineFormset
+    autocomplete_fields = ("product",)
+    fields = ("position", "product", "preview")
+    readonly_fields = ("preview",)
+
+    def preview(self, obj):
+        if obj and getattr(obj, "product", None):
+            first = obj.product.images.first()
+            if first and first.image:
+                try:
+                    return format_html('<img src="{}" style="height:60px;border-radius:6px;" />', first.image.url)
+                except Exception:
+                    pass
+        return "—"
+    preview.short_description = "Preview"
+
+
 @admin.register(LandingConfig)
 class LandingConfigAdmin(admin.ModelAdmin):
     form = LandingConfigAdminForm
-    filter_horizontal = ("goods",)  # удобный виджет выбора
-    list_display = ("__str__", "get_goods_count")
+    filter_horizontal = ("goods",)  # твой блок с «до 2 товаров» для другой секции
+    list_display = ("__str__", "get_goods_count", "get_three_count")
+    inlines = [LandingThreeItemInline]
 
     def get_goods_count(self, obj):
         return obj.goods.count()
-    get_goods_count.short_description = "Selected products"
+    get_goods_count.short_description = "Selected (2-items)"
+
+    def get_three_count(self, obj):
+        return obj.three_products.count()
+    get_three_count.short_description = "Selected (3-items)"
