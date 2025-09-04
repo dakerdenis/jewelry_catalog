@@ -54,7 +54,7 @@
                 <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
                 <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
                 <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
-                 <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
+                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
               </div>
             </div>
 
@@ -75,7 +75,9 @@
             <div class="footer__created">
               <a href="#"><img src="{% static 'img/common/logo_big.png' %}" alt="" /></a>
             </div>
-            <div class="footer__rights">© 2025 Ousvow Jewelry. All rights reserved.</div>
+            <div class="footer__rights">
+              © {% now 'Y' %} Ousvow Jewelry. All rights reserved.
+            </div>
           </div>
         </div>
       </footer>
