@@ -18,15 +18,15 @@
     <div class="main__wrapper">
       {# HEADER MENU #}
       <header>
-          <p>OUSVOW JEWELRY</p>
-          <div class="header__about-menu">
-            <div class="header__about-search">
-              <img src="{% static 'img/common/search-normal.svg' %}" alt="Search icon" />
-            </div>
-            <div class="header__about-burger">
-              <img src="{% static 'img/common/textalign-justifyright.svg' %}" alt="Burger icon" />
-            </div>
+        <p>OUSVOW JEWELRY</p>
+        <div class="header__about-menu">
+          <div class="header__about-search">
+            <img src="{% static 'img/common/search-normal.svg' %}" alt="Search icon" />
           </div>
+          <div class="header__about-burger">
+            <img src="{% static 'img/common/textalign-justifyright.svg' %}" alt="Burger icon" />
+          </div>
+        </div>
       </header>
       {# NAVIGTION #}
       <nav>
@@ -43,7 +43,41 @@
 
       {# FOOTER #}
       <footer>
-        <small>© Jewelry Shop</small>
+        <div class="footer__container">
+          <div class="footer__wrapper">
+            {# Footer desc #}
+            <div class="footer__desc">
+              <h2>OUSVOW JEWELRY</h2>
+              <p>This growth plan will help you reach your resolutions and achieve the goals you have been striving towards.</p>
+              <div class="footer__social">
+                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
+                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
+                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
+                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
+                 <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
+              </div>
+            </div>
+
+            {# Footer navigation #}
+            <div class="footer__navigation">
+              <div class="footer__navigation-element">
+                <h4>Navigation Name</h4>
+                <p>About</p>
+                <p>We Are</p>
+                <p>Test t</p>
+                <p>Contact</p>
+              </div>
+            </div>
+          </div>
+
+          {# Footer created and rights #}
+          <div class="footer__rights-created">
+            <div class="footer__created">
+              <a href="#"><img src="{% static 'img/common/logo_big.png' %}" alt="" /></a>
+            </div>
+            <div class="footer__rights">© 2025 Ousvow Jewelry. All rights reserved.</div>
+          </div>
+        </div>
       </footer>
     </div>
 
