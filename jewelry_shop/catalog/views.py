@@ -1,8 +1,7 @@
 # catalog/views.py
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Prefetch
-from .models import Collection, Product, ProductImage, LandingConfig
-from .models import LandingThreeItem
+from django.db.models import Prefetch, Count, Q
+from .models import Collection, Category, Product, ProductImage, LandingConfig, LandingThreeItem
 
 def landing_view(request):
     cfg = (
@@ -59,15 +58,72 @@ def landing_view(request):
     
     
     
+from .models import Collection, Category, Product, ProductImage, LandingConfig, LandingThreeItem
+from django.db.models import Count, Q, Prefetch
+
 def product_list_view(request):
-    # Все активные товары + категории + фотки (для превью)
-    products = (
+    selected_collections = request.GET.getlist("collection")
+    selected_categories  = request.GET.getlist("category")
+
+    products_qs = (
         Product.objects.filter(is_active=True)
-        .select_related("category", "category__collection")
-        .prefetch_related("images")   # хватит для первой фотки
+        .select_related("collection", "category")
+        .prefetch_related("images")
         .order_by("name")
     )
-    return render(request, "catalog/product_list.html", {"products": products})
+    if selected_collections:
+        products_qs = products_qs.filter(collection__slug__in=selected_collections)
+    if selected_categories:
+        products_qs = products_qs.filter(category__slug__in=selected_categories)
+
+    total_results = products_qs.count()
+
+    # фасет «Коллекции» — учитывает выбранные категории
+    collections = (
+        Collection.objects
+        .annotate(
+            product_count=Count(
+                "products",
+                filter=Q(products__is_active=True) &
+                       (Q(products__category__slug__in=selected_categories) if selected_categories else Q()),
+                distinct=True,
+            )
+        )
+        .order_by("name")
+    )
+
+    # фасет «Категории» (глобальные) — учитывает выбранные коллекции
+    categories = (
+        Category.objects
+        .annotate(
+            product_count=Count(
+                "products",
+                filter=Q(products__is_active=True) &
+                       (Q(products__collection__slug__in=selected_collections) if selected_collections else Q()),
+                distinct=True,
+            )
+        )
+        .order_by("name")
+    )
+
+    context = {
+        "products": products_qs,
+        "collections": collections,
+        "categories": categories,
+        "selected_collections": selected_collections,
+        "selected_categories": selected_categories,
+        "total_results": total_results,
+    }
+    return render(request, "catalog/product_list.html", context)
+
+
+
+
+
+
+
+
+
 
 def product_detail_view(request, slug: str):
     product = get_object_or_404(Product.objects.only("id", "name", "slug"), slug=slug)

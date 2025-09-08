@@ -15,12 +15,13 @@ class CollectionAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "collection")
-    list_filter = ("collection",)
+    list_display = ("name",)
     search_fields = ("name", "description")
     prepopulated_fields = {"slug": ("name",)}
+
 
 
 class ProductImageInline(admin.TabularInline):
@@ -49,43 +50,32 @@ class ProductImageInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    # мини-превью первой фотки в списке товаров
     def thumbnail(self, obj):
         first = obj.images.first()
         if first and first.image:
             try:
-                return format_html(
-                    '<img src="{}" style="height:60px; border-radius:6px;" />',
-                    first.image.url,
-                )
+                return format_html('<img src="{}" style="height:60px; border-radius:6px;" />', first.image.url)
             except Exception:
                 return "—"
         return "—"
     thumbnail.short_description = "Photo"
 
-    list_display = ("thumbnail", "name", "category", "price", "currency", "material", "is_active", "stock")
-    list_filter = ("category__collection", "category", "material", "is_active", "metal_color")
+# ProductAdmin
+    list_display = ("thumbnail", "name", "collection", "category", "price", "currency", "material", "is_active", "stock")
+    list_filter  = ("collection", "category", "material", "metal_color", "is_active")
     search_fields = ("name", "description", "sku", "gemstone")
     prepopulated_fields = {"slug": ("name",)}
     inlines = [ProductImageInline]
-
-    # галерея-превью на странице редактирования товара
     readonly_fields = ("gallery",)
 
     fieldsets = (
-        (None, {
-            "fields": ("category", "name", "slug", "description")
-        }),
-        ("Commerce", {
-            "fields": ("price", "currency", "sku", "stock", "is_active")
-        }),
-        ("Jewelry", {
-            "fields": ("material", "metal_color", "metal_purity_karat", "weight_grams", "gemstone", "gemstone_carat", "ring_size")
-        }),
-        ("Images preview", {
-            "fields": ("gallery",),
-        }),
+        (None, {"fields": ("collection", "category", "name", "slug", "description")}),
+        ("Commerce", {"fields": ("price", "currency", "sku", "stock", "is_active")}),
+        ("Jewelry", {"fields": ("material", "metal_color", "metal_purity_karat", "weight_grams",
+                                "gemstone", "gemstone_carat", "ring_size")}),
+        ("Images preview", {"fields": ("gallery",)}),
     )
+
 
     def gallery(self, obj):
         # при создании нового товара (obj None) просто ничего не рисуем

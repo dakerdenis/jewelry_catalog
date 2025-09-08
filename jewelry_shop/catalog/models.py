@@ -40,26 +40,25 @@ class Collection(TimestampedModel):
         return reverse("catalog:landing")
 
 
+# --- Category: глобальная, без связи с Collection ---
 class Category(TimestampedModel):
-    collection = models.ForeignKey(Collection, on_delete=models.CASCADE, related_name="categories")
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=220, help_text="Auto-filled from name")
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=220, unique=True, help_text="Auto-filled from name")
     description = models.TextField(blank=True)
 
     class Meta:
-        unique_together = ("collection", "slug")
         ordering = ["name"]
-        indexes = [models.Index(fields=["slug"]), models.Index(fields=["collection"])]
+        indexes = [models.Index(fields=["slug"])]
 
     def __str__(self) -> str:
-        return f"{self.collection.name} → {self.name}"
+        return self.name
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
     def get_absolute_url(self):
-        # когда появится страница категории — добавим URL
         return reverse("catalog:list")
     
 
@@ -78,28 +77,35 @@ class MetalColor(models.TextChoices):
     NONE = "none", "None"
 
 
+# --- Product: теперь хранит и collection, и category ---
 class Product(TimestampedModel):
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="products")
+    collection = models.ForeignKey(  # NEW
+        Collection,
+        on_delete=models.PROTECT,
+        related_name="products",
+    )
+    category = models.ForeignKey(    # как и было, но теперь к глобальной Category
+        Category,
+        on_delete=models.PROTECT,
+        related_name="products",
+    )
+
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=270, unique=True, help_text="Auto-filled from name")
     description = models.TextField(blank=True)
-
-    # commerce basics
-    price = models.DecimalField(max_digits=12, decimal_places=2, validators=[MinValueValidator(Decimal("0.0"))])
-    currency = models.CharField(max_length=3, default="USD")  # простое поле, позже можно нормализовать
+    price = models.DecimalField(max_digits=12, decimal_places=2,
+                                validators=[MinValueValidator(Decimal("0.0"))])
+    currency = models.CharField(max_length=3, default="USD")
     sku = models.CharField(max_length=64, unique=True, help_text="Stock keeping unit / article code")
 
-    # jewelry specifics
     material = models.CharField(max_length=20, choices=MaterialType.choices, default=MaterialType.GOLD)
     metal_color = models.CharField(max_length=10, choices=MetalColor.choices, default=MetalColor.NONE)
     metal_purity_karat = models.PositiveSmallIntegerField(blank=True, null=True, help_text="e.g., 14, 18")
     weight_grams = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
-
     gemstone = models.CharField(max_length=120, blank=True, help_text="e.g., Diamond, Emerald")
     gemstone_carat = models.DecimalField(max_digits=6, decimal_places=3, blank=True, null=True)
-    ring_size = models.CharField(max_length=16, blank=True)  # универсально: строкой (US/UK/EU)
+    ring_size = models.CharField(max_length=16, blank=True)
 
-    # stock & flags
     stock = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
@@ -107,6 +113,7 @@ class Product(TimestampedModel):
         ordering = ["name"]
         indexes = [
             models.Index(fields=["slug"]),
+            models.Index(fields=["collection"]),
             models.Index(fields=["category"]),
             models.Index(fields=["is_active"]),
         ]
@@ -118,10 +125,10 @@ class Product(TimestampedModel):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
     def get_absolute_url(self):
         return reverse("catalog:detail", kwargs={"slug": self.slug})
-    
-    
+
 
 def product_image_upload_to(instance: "ProductImage", filename: str) -> str:
     return f"products/{instance.product.id or 'new'}/{filename}"
