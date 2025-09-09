@@ -432,7 +432,11 @@
   height: 100%;
 }
 
-/* HERO */
+
+
+
+
+/****************** HERO ***********/
 .hero-video {
   position: relative;
   height: 665px;
@@ -541,6 +545,8 @@
     width: min(60vw, 560px);
   }
 }
+
+
 
 /**************LANDING 3element****************/
 

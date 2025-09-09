@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Collections — OUSVOW JEWELRY{% endblock %}
+
+{% block extra_css %}
+  <link href="{% static 'css/pages/collections.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<section class="collections">
+  {% for c in collections %}
+    <article class="col-row {% cycle 'is-normal' 'is-reversed' %}">
+      <div class="col-row__image">
+        {% if c.photo %}
+          <img src="{{ c.photo.url }}" alt="{{ c.name }}">
+        {% else %}
+          <img src="{% static 'img/catalog/catalog-placeholder.png' %}" alt="{{ c.name }}">
+        {% endif %}
+      </div>
+
+      <div class="col-row__text">
+        <h2 class="col-row__title">{{ c.name }}</h2>
+
+        {% if c.description %}
+          <p class="col-row__desc">{{ c.description }}</p>
+        {% endif %}
+
+
+        <div class="col-row__actions">
+          {% if c.quick_link %}
+            <a class="btn" href="{{ c.quick_link }}" target="_blank" rel="noopener">Quick link</a>
+          {% endif %}
+          <a class="btn btn--primary" href="{% url 'catalog:list' %}?collection={{ c.slug }}">See products</a>
+        </div>
+      </div>
+    </article>
+  {% empty %}
+    <p>No collections yet.</p>
+  {% endfor %}
+</section>
+{% endblock %}

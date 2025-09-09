@@ -57,9 +57,7 @@ def landing_view(request):
     })
     
     
-    
-from .models import Collection, Category, Product, ProductImage, LandingConfig, LandingThreeItem
-from django.db.models import Count, Q, Prefetch
+
 
 def product_list_view(request):
     selected_collections = request.GET.getlist("collection")
@@ -128,3 +126,23 @@ def product_list_view(request):
 def product_detail_view(request, slug: str):
     product = get_object_or_404(Product.objects.only("id", "name", "slug"), slug=slug)
     return render(request, "catalog/product_detail.html", {"product": product})
+
+
+# catalog/views.py
+def collections_view(request):
+    collections = (
+        Collection.objects.only("id", "name", "slug", "description", "photo", "quick_link")
+        .annotate(product_count=Count("products", filter=Q(products__is_active=True), distinct=True))
+        .order_by("name")
+    )
+    return render(request, "catalog/collections.html", {"collections": collections})
+
+
+
+
+
+
+
+
+
+
