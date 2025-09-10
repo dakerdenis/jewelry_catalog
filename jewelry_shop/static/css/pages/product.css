@@ -1,0 +1,109 @@
+.product__wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.product__container {
+  width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.product__images {
+  width: 904px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.product__image {
+  width: 430px;
+  height: 430px;
+  margin-bottom: 46px;
+  background-color: #e3e3e3;
+}
+.product__image-last {
+}
+.product__description {
+  width: calc(100% - 904px - 42px);
+  max-width: 381px;
+}
+.product__contact__button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  width: 381px;
+  height: 52px;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+
+  font-size: 16px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  cursor: pointer;
+}
+.product__contact__button a:hover {
+  background-color: #000;
+  color: #fff;
+}
+.product__desc-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+
+  font-size: 30px;
+
+  line-height: 60px;
+  letter-spacing: 0.5px;
+
+  color: #1e1e1e;
+}
+.product__desc-price {
+  margin-top: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+
+  font-size: 20px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #717171;
+}
+.product__desc-material {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 25px;
+
+  line-height: 60px;
+  letter-spacing: 0.5px;
+  color: #1e1e1e;
+}
+.product__desc-info {
+}
+.product__similar {
+}
+.product__similar__wrapper {
+}
+.product__similar-element {
+}
+.product__similar-image {
+}
+.product__similar-view {
+}
+.product__collection {
+}
+.product__collection-wrapper {
+}
+.product__collection-image {
+}
+.product__collection-desc {
+}
+.product__collection-text {
+}
+.product__collection-name {
+}
+.product__collection-description {
+}

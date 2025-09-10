@@ -1,10 +1,98 @@
-{% extends "base.html" %}
-{% block title %}Product — Jewelry Shop{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Product — Jewelry Shop
+{% endblock %}
+{% block extra_css %}
+  <link href="{% static 'css/pages/product.css' %}" rel="stylesheet" />
+{% endblock %}
 {% block content %}
-  <h1>Product page (stub)</h1>
-  <p>Detailed product information will be shown here.</p>
+  <div class="product__wrapper">
+    {# -----product about-- #}
+    <div class="product__container">
+      {# ---product images---- #}
+      <div class="product__images">
+        <div class="product__image">
+          <img src="" alt="" />
+        </div>
+        <div class="product__image">
+          <img src="" alt="" />
+        </div>
+        <div class="product__image">
+          <img src="" alt="" />
+        </div>
+        <div class="product__image">
+          <img src="" alt="" />
+        </div>
+        {# only fifth image will be this size #}
+        <div class="product__image product__image-last">
+          <img src="" alt="" />
+        </div>
+      </div>
+      {# ----PRODUCT DESCRIPTION---- #}
+      <div class="product__description">
+        <div class="product__contact__button">
+          <a>
+            <p>Contact us for order</p>
+          </a>
+        </div>
+        <div class="product__desc-name">
+          <h3>{{ product.name }}</h3>
+        </div>
+        <div class="product__desc-price">
+          <p>{{ product.price }} $</p>
+        </div>
+        <div class="product__desc-material">
+          <p>Metal: {{ product.metal_purity_karat }}k {{ product.material }}</p>
+        </div>
+        <div class="product__desc-info">
+          {{ product.description }} <br />
+          {{ product.price }} <br />
+          {{ product.sku }} <br />
+          {{ product.material }} <br />
+          {{ product.metal_color }} <br />
+           <br />
+          {{ product.weight_grams }} <br />
+          {{ product.gemstone_carat }} <br />
+          {{ product.ring_size }} <br />
+        </div>
+      </div>
+    </div>
+    {# --------- #}
 
-  {% if product %}
-    <p><strong>Debug:</strong> current slug = <code>{{ product.slug }}</code></p>
-  {% endif %}
+    {#- --SIMILAR PRODUCT---- #}
+    <div class="product__similar">
+      <h4>Similar Products</h4>
+      <div class="product__similar__wrapper">
+        {# ---- #}
+        <div class="product__similar-element">
+          <div class="product__similar-image"></div>
+          <a href="" class="product__similar-view">VIEW</a>
+        </div>
+        {# ---- #}
+      </div>
+    </div>
+    {# ----SIMIELAR PRODUCT END----- #}
+
+    {# -----ABOUT COLLECTION---- #}
+    <div class="product__collection">
+      <div class="product__collection-wrapper">
+        {# --Product dollection image- --- #}
+        <div class="product__collection-image"></div>
+
+        {# ----PRODUCt dollection desc--- #}
+        <div class="product__collection-desc">
+          <div class="product__collection-text">ABOUT THE COLLECTION</div>
+          <div class="product__collection-name">
+            <p>Pearl collection</p>
+          </div>
+
+          <div class="product__collection-description">
+            <p>Lorem ipsum dolor sit amet consectetur. Dolor et volutpat in non. Luctus sit libero urna viverra sed non dui elementum Dolor et volutpat in non. Luctus sit libero urna v iverra .</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {# ----ABOUT COLLECTION END----- #}
+  </div>
 {% endblock %}
