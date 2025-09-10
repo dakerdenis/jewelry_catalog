@@ -124,8 +124,20 @@ def product_list_view(request):
 
 
 def product_detail_view(request, slug: str):
-    product = get_object_or_404(Product.objects.only("id", "name", "slug"), slug=slug)
-    return render(request, "catalog/product_detail.html", {"product": product})
+    product = get_object_or_404(
+        Product.objects.select_related("collection", "category")
+        .prefetch_related("images"),
+        slug=slug,
+    )
+    # список фото (в порядке, заданном в Meta.ordering)
+    images = list(product.images.all())
+    return render(request, "catalog/product_detail.html", {
+        "product": product,
+        "images": images,     # отдадим всё, отрежем в шаблоне
+    })
+    
+
+
 
 
 # catalog/views.py

@@ -21,6 +21,12 @@
   height: 430px;
   margin-bottom: 46px;
   background-color: #e3e3e3;
+  box-shadow: 1px 1px 8px #00000018;
+}
+.product__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .product__image-last {
 }
@@ -77,9 +83,12 @@
   font-style: Medium;
   font-size: 25px;
 
-  line-height: 60px;
+  line-height: 40px;
   letter-spacing: 0.5px;
   color: #1e1e1e;
+  border-top: 1px solid #1e1e1e;
+  margin-top: 15px;
+  padding-top: 5px;
 }
 .product__desc-info {
 }
@@ -107,3 +116,88 @@
 }
 .product__collection-description {
 }
+
+
+
+
+
+/* контейнер */
+.acc { margin-top: 24px; }
+
+/* элемент и разделительные линии */
+.acc__item {
+  border-bottom: 1px solid #e5e5e5;
+}
+.acc__item:first-child {
+  border-top: 1px solid #e5e5e5;
+}
+
+/* заголовок */
+.acc__header {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+.acc__header::-webkit-details-marker { display: none; }
+
+/* плюс/минус */
+.acc__icon { position: relative; width: 18px; height: 18px; }
+.acc__icon::before, .acc__icon::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 2px;
+  background: #3a3a3a;
+  transform: translateY(-50%);
+  transition: transform .25s ease;
+}
+.acc__icon::after { transform: translateY(-50%) rotate(90deg); }   /* вертикальная черта */
+details[open] .acc__icon::after { transform: translateY(-50%) rotate(0deg); } /* превращаем в минус */
+
+/* панель с анимацией раскрытия */
+.acc__panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .35s ease;
+}
+details[open] .acc__panel { max-height: 800px; } /* достаточно большое значение */
+details[open] .acc__panel > * { animation: accFade .25s ease; }
+@keyframes accFade { from{opacity:.0; transform:translateY(-4px);} to{opacity:1; transform:none;} }
+
+/* описание характеристик */
+.pd {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  column-gap: 16px;
+  row-gap: 10px;
+  margin: 0 0 16px;
+}
+.pd dt {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: .08em;
+  font-weight: 600;
+  color: #6b6b6b;
+  text-transform: uppercase;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.pd dd {
+  margin: 0;
+  color: #1e1e1e;
+  font-weight: 500;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.pd__descr { color:#333; margin: 4px 0 8px; font-family: 'Plus Jakarta Sans', sans-serif;}
+.pd__row { margin: 8px 0; }
+.acc__link { color:#1e1e1e; font-weight:600; text-decoration: underline; }
