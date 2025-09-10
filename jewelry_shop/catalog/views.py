@@ -1,6 +1,6 @@
 # catalog/views.py
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Prefetch, Count, Q
+from django.db.models import Prefetch, Count, Q, Case, When, IntegerField
 from .models import Collection, Category, Product, ProductImage, LandingConfig, LandingThreeItem
 
 def landing_view(request):
@@ -129,12 +129,29 @@ def product_detail_view(request, slug: str):
         .prefetch_related("images"),
         slug=slug,
     )
-    # список фото (в порядке, заданном в Meta.ordering)
     images = list(product.images.all())
+
+    similar_qs = (
+        Product.objects.filter(is_active=True, collection=product.collection)
+        .exclude(pk=product.pk)
+        .select_related("collection", "category")
+        .prefetch_related("images")
+        .annotate(
+            same_category=Case(
+                When(category=product.category, then=1),
+                default=0,
+                output_field=IntegerField(),
+            )
+        )
+        .order_by("-same_category", "name")[:4]   # ← максимум 4
+    )
+
     return render(request, "catalog/product_detail.html", {
         "product": product,
-        "images": images,     # отдадим всё, отрежем в шаблоне
+        "images": images,
+        "similar_products": list(similar_qs),
     })
+    
     
 
 

@@ -33,7 +33,7 @@
   width: 486px;
   height: 256px;
   top: 80px;
-  right: 50px;
+  right: 10%;
 }
 .landing__main-text h2 {
   font-family: 'Playfair Display', serif;
@@ -573,13 +573,13 @@
   position: absolute;
   z-index: 100;
   width: 100%;
-  height: 100%;
+  height: 320px;
   background-color: #1e1e1e38;
 }
 .elements-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .elements-desc {
   width: 340px;

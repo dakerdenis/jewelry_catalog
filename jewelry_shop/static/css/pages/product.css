@@ -4,18 +4,21 @@
   margin: 0 auto;
   margin-top: 100px;
 }
+
 .product__container {
   width: 1360px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
+
 .product__images {
   width: 904px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .product__image {
   width: 430px;
   height: 430px;
@@ -23,17 +26,20 @@
   background-color: #e3e3e3;
   box-shadow: 1px 1px 8px #00000018;
 }
+
 .product__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.product__image-last {
-}
+
+.product__image-last {}
+
 .product__description {
   width: calc(100% - 904px - 42px);
   max-width: 381px;
 }
+
 .product__contact__button a {
   display: flex;
   align-items: center;
@@ -51,10 +57,12 @@
   letter-spacing: 0%;
   cursor: pointer;
 }
+
 .product__contact__button a:hover {
   background-color: #000;
   color: #fff;
 }
+
 .product__desc-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
@@ -66,6 +74,7 @@
 
   color: #1e1e1e;
 }
+
 .product__desc-price {
   margin-top: 13px;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -77,6 +86,7 @@
   letter-spacing: 0%;
   color: #717171;
 }
+
 .product__desc-material {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
@@ -90,31 +100,151 @@
   margin-top: 15px;
   padding-top: 5px;
 }
-.product__desc-info {
-}
+
+.product__desc-info {}
+
+
+/**?? SIMILAR PRODUCT*************/
 .product__similar {
+  margin-top: 90px;
+  width: 1222px;
+  margin: 0 auto;
 }
+
+.product__similar h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 25px;
+
+  line-height: 60px;
+  letter-spacing: 0.5px;
+  text-align: center;
+
+}
+
 .product__similar__wrapper {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
 }
+
 .product__similar-element {
+  width: 262px;
+  height: 350px;
+  box-shadow: 1px 1px 8px #00000018;
+  position: relative;
 }
+
 .product__similar-image {
+  position: absolute;
+  z-index: 100;
+}
+.product__similar-image a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}.product__similar-image a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .product__similar-view {
+  z-index: 200;
+  position: absolute;
+  width: 221px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+
+  font-size: 16px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+
+  text-decoration-thickness: 0%;
+  bottom: 23px;
+  left: calc(50% - 110.5px);
+
+  color: #1e1e1e;
 }
+
+/**? PRODUCT COLLECTION******/
 .product__collection {
+  width: 1105px;
+  height: 550px;
+  margin: 0 auto;
 }
+
 .product__collection-wrapper {
+  margin-top: 143px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .product__collection-image {
+  height: 550px;
+  width: 550px;
+  background-color: #e3e3e3;
 }
+
+.product__collection-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .product__collection-desc {
+  width: 452px;
+
 }
+
 .product__collection-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 40px;
+  letter-spacing: 0.5px;
+
+
 }
+
 .product__collection-name {
+  font-family: 'Noto Serif', serif;
+  font-weight: 500;
+
+  font-size: 60px;
+
+  line-height: 105px;
+  letter-spacing: 0%;
+
 }
+
 .product__collection-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+
+  line-height: 40px;
+  letter-spacing: 0%;
+
 }
 
 
@@ -122,19 +252,22 @@
 
 
 /* контейнер */
-.acc { margin-top: 24px; }
+.acc {
+  margin-top: 24px;
+}
 
 /* элемент и разделительные линии */
 .acc__item {
   border-bottom: 1px solid #e5e5e5;
 }
+
 .acc__item:first-child {
   border-top: 1px solid #e5e5e5;
 }
 
 /* заголовок */
 .acc__header {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   list-style: none;
   display: flex;
   align-items: center;
@@ -148,22 +281,41 @@
   font-weight: 600;
   color: #1e1e1e;
 }
-.acc__header::-webkit-details-marker { display: none; }
+
+.acc__header::-webkit-details-marker {
+  display: none;
+}
 
 /* плюс/минус */
-.acc__icon { position: relative; width: 18px; height: 18px; }
-.acc__icon::before, .acc__icon::after {
+.acc__icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.acc__icon::before,
+.acc__icon::after {
   content: "";
   position: absolute;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   top: 50%;
   height: 2px;
   background: #3a3a3a;
   transform: translateY(-50%);
   transition: transform .25s ease;
 }
-.acc__icon::after { transform: translateY(-50%) rotate(90deg); }   /* вертикальная черта */
-details[open] .acc__icon::after { transform: translateY(-50%) rotate(0deg); } /* превращаем в минус */
+
+.acc__icon::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* вертикальная черта */
+details[open] .acc__icon::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* превращаем в минус */
 
 /* панель с анимацией раскрытия */
 .acc__panel {
@@ -171,9 +323,27 @@ details[open] .acc__icon::after { transform: translateY(-50%) rotate(0deg); } /*
   max-height: 0;
   transition: max-height .35s ease;
 }
-details[open] .acc__panel { max-height: 800px; } /* достаточно большое значение */
-details[open] .acc__panel > * { animation: accFade .25s ease; }
-@keyframes accFade { from{opacity:.0; transform:translateY(-4px);} to{opacity:1; transform:none;} }
+
+details[open] .acc__panel {
+  max-height: 800px;
+}
+
+/* достаточно большое значение */
+details[open] .acc__panel>* {
+  animation: accFade .25s ease;
+}
+
+@keyframes accFade {
+  from {
+    opacity: .0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* описание характеристик */
 .pd {
@@ -183,6 +353,7 @@ details[open] .acc__panel > * { animation: accFade .25s ease; }
   row-gap: 10px;
   margin: 0 0 16px;
 }
+
 .pd dt {
   margin: 0;
   font-size: 12px;
@@ -190,14 +361,30 @@ details[open] .acc__panel > * { animation: accFade .25s ease; }
   font-weight: 600;
   color: #6b6b6b;
   text-transform: uppercase;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
+
 .pd dd {
   margin: 0;
   color: #1e1e1e;
   font-weight: 500;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.pd__descr { color:#333; margin: 4px 0 8px; font-family: 'Plus Jakarta Sans', sans-serif;}
-.pd__row { margin: 8px 0; }
-.acc__link { color:#1e1e1e; font-weight:600; text-decoration: underline; }
+
+.pd__descr {
+  color: #333;
+  margin: 4px 0 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.pd__row {
+  margin: 8px 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 150%;
+}
+
+.acc__link {
+  color: #1e1e1e;
+  font-weight: 600;
+  text-decoration: underline;
+}

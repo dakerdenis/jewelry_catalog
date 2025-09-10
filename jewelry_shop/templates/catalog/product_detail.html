@@ -1,185 +1,222 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-  Product — {{ product.name }}
+Product — {{ product.name }}
 {% endblock %}
 
 {% block extra_css %}
-  {{ block.super }}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
-  <link href="{% static 'css/pages/product.css' %}" rel="stylesheet" />
+{{ block.super }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+<link href="{% static 'css/pages/product.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
-  <div class="product__wrapper">
-    {# -----product about-- #}
-    {# -----product about-- #}
-    <div class="product__container">
-      {# ---product images---- #}
-      {# ---product images---- #}
-      <div class="product__images">
-        {% for img in images|slice:':5' %}
-          <div class="product__image {% if forloop.counter == 5 %}product__image-last{% endif %}">
-            <a href="{{ img.image.url }}" data-fancybox="p{{ product.pk }}" data-caption="{{ img.alt_text|default:product.name }}"><img src="{{ img.image.url }}" alt="{{ img.alt_text|default:product.name }}" /></a>
-          </div>
-        {% endfor %}
+<div class="product__wrapper">
+  {# -----product about-- #}
+  {# -----product about-- #}
+  <div class="product__container">
+    {# ---product images---- #}
+    {# ---product images---- #}
+    <div class="product__images">
+      {% for img in images|slice:':5' %}
+      <div class="product__image {% if forloop.counter == 5 %}product__image-last{% endif %}">
+        <a href="{{ img.image.url }}" data-fancybox="p{{ product.pk }}"
+          data-caption="{{ img.alt_text|default:product.name }}"><img src="{{ img.image.url }}"
+            alt="{{ img.alt_text|default:product.name }}" /></a>
       </div>
+      {% endfor %}
+    </div>
 
-      {# ----PRODUCT DESCRIPTION---- #}
-      <div class="product__description">
-        <div class="product__contact__button">
-          <a><p>Contact us for order</p></a>
-        </div>
-        <div class="product__desc-name">
-          <h3>{{ product.name }}</h3>
-        </div>
-        <div class="product__desc-price">
-          <p>{{ product.price }} $</p>
-        </div>
-        <div class="product__desc-material">
-          <p>Metal: {{ product.metal_purity_karat }}k {{ product.material }}</p>
-        </div>
-        {# ===== ACCORDION ===== #}
-        <div class="acc">
-          {# 1) Product detail #}
-          <details class="acc__item" data-acc>
-            <summary class="acc__header">
-              <span>PRODUCT DETAIL</span>
-              <span class="acc__icon" aria-hidden="true"></span>
-            </summary>
-            <div class="acc__panel">
-              <dl class="pd">
-                {% if product.sku %}
-                  <div>
-                    <dt>SKU</dt><dd>{{ product.sku }}</dd>
-                  </div>
-                {% endif %}
-                {% if product.metal_purity_karat or product.material %}
-                  <div>
-                    <dt>METAL</dt>
-                    <dd>
-                      {% if product.metal_purity_karat %}
-                        {{ product.metal_purity_karat }}k
-                      {% endif %}
-                      {% if product.material %}
-                        {{ product.material|title }}
-                      {% endif %}
-                    </dd>
-                  </div>
-                {% endif %}
-                {% if product.metal_color and product.metal_color != 'none' %}
-                  <div>
-                    <dt>COLOR</dt><dd>{{ product.metal_color|title }}</dd>
-                  </div>
-                {% endif %}
-                {% if product.weight_grams %}
-                  <div>
-                    <dt>WEIGHT</dt><dd>{{ product.weight_grams }} g</dd>
-                  </div>
-                {% endif %}
-                {% if product.gemstone or product.gemstone_carat %}
-                  <div>
-                    <dt>GEMSTONE</dt>
-                    <dd>
-                      {% if product.gemstone %}{{ product.gemstone }}{% endif %}
-                      {% if product.gemstone_carat %}
-                        , {{ product.gemstone_carat }} ct
-                      {% endif %}
-                    </dd>
-                  </div>
-                {% endif %}
-
-              </dl>
-
-              {% if product.description %}
-                <div class="pd__descr">{{ product.description|linebreaksbr }}</div>
+    {# ----PRODUCT DESCRIPTION---- #}
+    <div class="product__description">
+      <div class="product__contact__button">
+        <a>
+          <p>Contact us for order</p>
+        </a>
+      </div>
+      <div class="product__desc-name">
+        <h3>{{ product.name }}</h3>
+      </div>
+      <div class="product__desc-price">
+        <p>{{ product.price }} $</p>
+      </div>
+      <div class="product__desc-material">
+        <p>Metal: {{ product.metal_purity_karat }}k {{ product.material }}</p>
+      </div>
+      {# ===== ACCORDION ===== #}
+      <div class="acc">
+        {# 1) Product detail #}
+        <details class="acc__item" data-acc>
+          <summary class="acc__header">
+            <span>PRODUCT DETAIL</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__panel">
+            <dl class="pd">
+              {% if product.sku %}
+              <div>
+                <dt>SKU</dt>
+                <dd>{{ product.sku }}</dd>
+              </div>
               {% endif %}
-            </div>
-          </details>
-
-          {# 2) Size guide #}
-          <details class="acc__item" data-acc>
-            <summary class="acc__header">
-              <span>SIZE GUIDE</span>
-              <span class="acc__icon" aria-hidden="true"></span>
-            </summary>
-            <div class="acc__panel">
-              {% if product.ring_size %}
-                <p class="pd__row">
-                  <strong>Ring size:</strong> {{ product.ring_size }}
-                </p>
-              {% else %}
-                <p class="pd__row">Sizing depends on the style (rings, chains, bracelets). Contact us for assistance.</p>
+              {% if product.metal_purity_karat or product.material %}
+              <div>
+                <dt>METAL</dt>
+                <dd>
+                  {% if product.metal_purity_karat %}
+                  {{ product.metal_purity_karat }}k
+                  {% endif %}
+                  {% if product.material %}
+                  {{ product.material|title }}
+                  {% endif %}
+                </dd>
+              </div>
               {% endif %}
-              {# Можешь заменить на свой PDF или страницу: #}
-              <p class="pd__row">
-                <a href="#" class="acc__link">Open size guide</a>
-              </p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </div>
-    {# --------- #}
+              {% if product.metal_color and product.metal_color != 'none' %}
+              <div>
+                <dt>COLOR</dt>
+                <dd>{{ product.metal_color|title }}</dd>
+              </div>
+              {% endif %}
+              {% if product.weight_grams %}
+              <div>
+                <dt>WEIGHT</dt>
+                <dd>{{ product.weight_grams }} g</dd>
+              </div>
+              {% endif %}
+              {% if product.gemstone or product.gemstone_carat %}
+              <div>
+                <dt>GEMSTONE</dt>
+                <dd>
+                  {% if product.gemstone %}{{ product.gemstone }}{% endif %}
+                  {% if product.gemstone_carat %}
+                  , {{ product.gemstone_carat }} ct
+                  {% endif %}
+                </dd>
+              </div>
+              {% endif %}
 
-    {#- --SIMILAR PRODUCT---- #}
-    <div class="product__similar">
-      <h4>Similar Products</h4>
-      <div class="product__similar__wrapper">
-        {# ---- #}
-        <div class="product__similar-element">
-          <div class="product__similar-image"></div>
-          <a href="" class="product__similar-view">VIEW</a>
-        </div>
-        {# ---- #}
-      </div>
-    </div>
-    {# ----SIMIELAR PRODUCT END----- #}
+            </dl>
 
-    {# -----ABOUT COLLECTION---- #}
-    <div class="product__collection">
-      <div class="product__collection-wrapper">
-        {# --Product dollection image- --- #}
-        <div class="product__collection-image"></div>
-
-        {# ----PRODUCt dollection desc--- #}
-        <div class="product__collection-desc">
-          <div class="product__collection-text">ABOUT THE COLLECTION</div>
-          <div class="product__collection-name">
-            <p>Pearl collection</p>
+            {% if product.description %}
+            <div class="pd__descr">{{ product.description|linebreaksbr }}</div>
+            {% endif %}
           </div>
+        </details>
 
-          <div class="product__collection-description">
-            <p>Lorem ipsum dolor sit amet consectetur. Dolor et volutpat in non. Luctus sit libero urna viverra sed non dui elementum Dolor et volutpat in non. Luctus sit libero urna v iverra .</p>
+        {# 2) Size guide #}
+        <details class="acc__item" data-acc>
+          <summary class="acc__header">
+            <span>SIZE GUIDE</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__panel">
+            {% if product.ring_size %}
+            <p class="pd__row">
+              <strong>Ring size:</strong> {{ product.ring_size }}
+            </p>
+            {% else %}
+            <p class="pd__row">Sizing depends on the style (rings, chains, bracelets). Contact us for assistance.</p>
+            {% endif %}
+
           </div>
-        </div>
+        </details>
       </div>
     </div>
-    {# ----ABOUT COLLECTION END----- #}
   </div>
+  {# --------- #}
+
+  {#- --SIMILAR PRODUCT---- #}
+  {% if similar_products %}
+  <div class="product__similar">
+    <h4>Similar Products</h4>
+    <div class="product__similar__wrapper">
+      {% for sp in similar_products|slice:":4" %}
+      <div class="product__similar-element">
+        <div class="product__similar-image">
+          {% with img=sp.images.all|first %}
+          {% if img %}
+          <a href="{{ sp.get_absolute_url }}">
+            <img src="{{ img.image.url }}" alt="{{ sp.name }}">
+          </a>
+          {% endif %}
+          {% endwith %}
+        </div>
+        <a href="{{ sp.get_absolute_url }}" class="product__similar-view">VIEW</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+
+  {# ---- ABOUT COLLECTION ---- #}
+  {% with col=product.collection %}
+  {% if col.name or col.description or col.photo %}
+  <div class="product__collection">
+    <div class="product__collection-wrapper">
+
+      {# фото коллекции (если есть) #}
+      <div class="product__collection-image">
+        {% if col.photo %}
+        <img src="{{ col.photo.url }}" alt="{{ col.name }}">
+        {% endif %}
+      </div>
+
+      {# текст коллекции #}
+      <div class="product__collection-desc">
+        <div class="product__collection-text">ABOUT THE COLLECTION</div>
+
+        <div class="product__collection-name">
+          <p>{{ col.name }}</p>
+        </div>
+
+        {% if col.description %}
+        <div class="product__collection-description">
+          <p>{{ col.description }}</p>
+        </div>
+        {% endif %}
+
+        {# опционально: внешняя быстрая ссылка, если задана #}
+        {% if col.quick_link %}
+        <div class="product__collection-link">
+          <a href="{{ col.quick_link }}" target="_blank" rel="noopener" class="product__collection-cta">
+            Explore collection →
+          </a>
+        </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+  {% endif %}
+  {% endwith %}
+  {# ---- /ABOUT COLLECTION ---- #}
+
+</div>
 {% endblock %}
 
 {% block extra_js %}
-  {{ block.super }}
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-  <script>
-    // одна группа на страницу, чтобы все снимки открывались в одном просмотрщике
-    Fancybox.bind("[data-fancybox='p{{ product.pk }}']", {
-      Hash: false, // <— отключаем #hash в URL
-      Thumbs: { autoStart: true }, // миниатюры сразу
-      Toolbar: { display: ['close'] },
-      trapFocus: true
-    })
-  </script>
-  <script>
-    // аккордеон: при открытии одного — остальные закрываются
-    document.querySelectorAll('.acc [data-acc]').forEach((d) => {
-      d.addEventListener('toggle', function () {
-        if (!this.open) return
-        document.querySelectorAll('.acc [data-acc]').forEach((other) => {
-          if (other !== this) other.open = false
-        })
+{{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script>
+  // одна группа на страницу, чтобы все снимки открывались в одном просмотрщике
+  Fancybox.bind("[data-fancybox='p{{ product.pk }}']", {
+    Hash: false, // <— отключаем #hash в URL
+    Thumbs: { autoStart: true }, // миниатюры сразу
+    Toolbar: { display: ['close'] },
+    trapFocus: true
+  })
+</script>
+<script>
+  // аккордеон: при открытии одного — остальные закрываются
+  document.querySelectorAll('.acc [data-acc]').forEach((d) => {
+    d.addEventListener('toggle', function () {
+      if (!this.open) return
+      document.querySelectorAll('.acc [data-acc]').forEach((other) => {
+        if (other !== this) other.open = false
       })
     })
-  </script>
+  })
+</script>
 {% endblock %}
