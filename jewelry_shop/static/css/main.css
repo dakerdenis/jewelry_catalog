@@ -306,23 +306,36 @@ footer {
 }
 
 @media only screen and (max-width: 980px) {
-  .landind__concept{
-    width: 100%;
-    height: initial;
-  }
-  .concept__wrapper{
-    width: 100%;
-  }
-.goods__element{
-  flex-direction: column;
-  align-items: center;
-  height: initial;
+      header a {
+        font-size: 25px;
+      }
+      nav{
+        padding: 0 20px;
+        height: 50px;
+      }
+      .navigation__element {
+        font-size: 15px;
+      }
+      footer{
+        height: initial;
+      }
+      .footer__container{
+        width:100%;
+      }
+      .footer__wrapper{
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column-reverse;
+      }
+      .footer__navigation{
+        width: 100%;
+            justify-content: space-between;
+      }
+      header {
+        padding: 0 10px 0 35px;
+      }
 }
-.goods__element-image{
-  width: 300px;
-  height: 300px;
-}
-}
+
 
 
 
