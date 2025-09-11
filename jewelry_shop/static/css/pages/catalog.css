@@ -1,7 +1,7 @@
 :root {
   --chk-size: 29px;
-  --chk-border: #1E1E1E;
-  --chk-fill: #1E1E1E;
+  --chk-border: #1e1e1e;
+  --chk-fill: #1e1e1e;
 }
 
 .catalog__wrapper {
@@ -152,7 +152,6 @@
 
   line-height: 40px;
   letter-spacing: 0.5px;
-
 }
 
 /* Квадрат 29×29, 1px рамка */
@@ -163,12 +162,13 @@
   border-radius: 0;
   /* изначально острые углы */
   background: transparent;
-  transition: background .18s ease, border-radius .18s ease, border-color .18s ease, box-shadow .18s ease;
+  transition: background 0.18s ease, border-radius 0.18s ease,
+    border-color 0.18s ease, box-shadow 0.18s ease;
   flex: 0 0 auto;
 }
 
 /* Состояние :checked — закругляем и заливаем */
-.chk__input:checked+.chk__label .chk__box {
+.chk__input:checked + .chk__label .chk__box {
   background: var(--chk-fill);
   border-color: var(--chk-fill);
   border-radius: 8px;
@@ -240,31 +240,40 @@
   color: #717171;
 }
 
-
-
-
-
 /* Фокус клавиатурой — видимая рамка доступности */
-.chk__input:focus-visible+.chk__label .chk__box {
+.chk__input:focus-visible + .chk__label .chk__box {
   outline: 2px solid #000;
   outline-offset: 2px;
 }
 
 /* Необязательно: disabled-состояние */
-.chk__input:disabled+.chk__label {
-  opacity: .6;
+.chk__input:disabled + .chk__label {
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
-.catalog__clear{
-  color: #1E1E1E;
+.catalog__clear {
+  color: #1e1e1e;
   font-size: 20px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   margin-left: 30px;
   text-shadow: 1px 1px 2px #1e1e1e7a;
 }
 
+@media only screen and (max-width: 1370px) {
+  .catalog__container {
+    width: 1200px;
+  }
+  .catalog__element {
+    width: 270px;
+    height: 390px;
 
+  }
+  .catalog__element-img {
+    width: 270px;
+    height: 270px;
+  }
+}
 
 /* адаптивные брейкпоинты: 2 колонки и 1 колонка ниже */
 @media (max-width: 1100px) {

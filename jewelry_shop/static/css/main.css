@@ -293,3 +293,36 @@ footer {
   line-height: 24px;
   letter-spacing: 0%;
 }
+@media only screen and (max-width: 1370px) {
+  header{
+    height: 90px;
+  }
+  nav{
+    top: 90px;
+  }
+  header a{
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .landind__concept{
+    width: 100%;
+    height: initial;
+  }
+  .concept__wrapper{
+    width: 100%;
+  }
+.goods__element{
+  flex-direction: column;
+  align-items: center;
+  height: initial;
+}
+.goods__element-image{
+  width: 300px;
+  height: 300px;
+}
+}
+
+
+

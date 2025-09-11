@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  Landing — Jewelry Shop
+  OUSVOW JEWELRY — Jewelry Shop
 {% endblock %}
 
 {% block body_class %}
@@ -165,21 +165,12 @@
       </div>
     </div>
 
-
-
     <section class="hero-video">
-      <div class="hero-video__bg">
-        <!-- img src="{% static 'img/landing/hero.jpg' %}" alt="" / -->
-      </div>
-
-      <button class="hero-video__play" id="openVideo" aria-label="Play video" data-yturl="https://youtube.com/shorts/zpHBbHwFHDM?si=0cEXtULe4k5jUnvT">
-        <img src="{% static 'img/landing/button-video.svg' %}" alt="" srcset="">
-        
-      </button>
-
-      <div class="hero-video__text">
-        <h2>Lorem Ipsum</h2>
-        <p>The definitive selection to celebrate in style</p>
+      <!-- любой фон/текст... -->
+      <div class="hero-video__thumbs">
+        <button class="hero-video__play" data-yturl="https://youtube.com/shorts/zpHBbHwFHDM"><img src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
+        <button class="hero-video__play" data-yturl="https://www.youtube.com/watch?v=eoRLoPYi73Y"><img src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
+        <!-- добавляй сколько нужно -->
       </div>
     </section>
 
@@ -188,6 +179,11 @@
       <div class="video-modal__overlay" data-close></div>
       <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-label="Video">
         <button class="video-modal__close" data-close aria-label="Close">×</button>
+
+        <!-- Кнопки навигации по плейлисту -->
+        <button class="video-modal__nav video-modal__prev" data-prev aria-label="Previous">‹</button>
+        <button class="video-modal__nav video-modal__next" data-next aria-label="Next">›</button>
+
         <div class="video-modal__player" id="videoPlayer"></div>
       </div>
     </div>
@@ -244,71 +240,103 @@
     })
   </script>
 
-  <script>
-    ;(function () {
-      const btn = document.getElementById('openVideo')
-      const modal = document.getElementById('videoModal')
-      const slot = document.getElementById('videoPlayer')
-    
-      if (!btn || !modal || !slot) return
-    
-      // Универсально выдергиваем ID из watch/shorts/youtu.be
-      function getYouTubeId(url) {
-        try {
-          const u = new URL(url)
-          if (u.hostname.includes('youtu.be')) return u.pathname.slice(1)
-          if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/shorts/')[1].split('/')[0]
-          if (u.searchParams.get('v')) return u.searchParams.get('v')
-          const m = url.match(/(?:embed|shorts|watch\/|v\/)([A-Za-z0-9_-]{11})/)
-          return m ? m[1] : null
-        } catch {
-          return null
-        }
-      }
-    
-      function buildSrc(id) {
-        const p = new URLSearchParams({
-          autoplay: 1,
-          playsinline: 1,
-          modestbranding: 1,
-          rel: 0
-          // Чтобы точно зациклилось (если нужно): loop=1&playlist=<ID>
-          // loop: 1, playlist: id
-        })
-        return `https://www.youtube-nocookie.com/embed/${id}?${p.toString()}`
-      }
-    
-      function openModal() {
-        const id = getYouTubeId(btn.dataset.yturl || '')
-        if (!id) return
-    
-        const iframe = document.createElement('iframe')
-        iframe.src = buildSrc(id)
-        iframe.title = 'YouTube video'
-        iframe.allow = 'autoplay; encrypted-media; picture-in-picture'
-        iframe.allowFullscreen = true
-        iframe.style.width = '100%'
-        iframe.style.height = '100%'
-        slot.innerHTML = ''
-        slot.appendChild(iframe)
-    
-        modal.hidden = false
-        document.body.style.overflow = 'hidden'
-      }
-    
-      function closeModal() {
-        modal.hidden = true
-        slot.innerHTML = '' // удаляем iframe, чтобы остановить воспроизведение
-        document.body.style.overflow = ''
-      }
-    
-      btn.addEventListener('click', openModal)
-      modal.addEventListener('click', (e) => {
-        if (e.target.hasAttribute('data-close')) closeModal()
-      })
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.hidden) closeModal()
-      })
-    })()
-  </script>
+<script>
+;(function () {
+  const modal = document.getElementById('videoModal');
+  const slot  = document.getElementById('videoPlayer');
+  const btns  = Array.from(document.querySelectorAll('.hero-video [data-yturl]')); // все триггеры на странице
+  const prev  = modal.querySelector('[data-prev]');
+  const next  = modal.querySelector('[data-next]');
+
+  if (!modal || !slot) return;
+
+  // --- utils ---
+  function getYouTubeId(url) {
+    try {
+      const u = new URL(url);
+      if (u.hostname.includes('youtu.be')) return u.pathname.slice(1);
+      if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/shorts/')[1].split('/')[0];
+      if (u.searchParams.get('v')) return u.searchParams.get('v');
+      const m = url.match(/(?:embed|shorts|watch\/|v\/)([A-Za-z0-9_-]{11})/);
+      return m ? m[1] : null;
+    } catch { return null; }
+  }
+
+  function buildSrc(id) {
+    const p = new URLSearchParams({
+      autoplay: 1,
+      playsinline: 1,
+      modestbranding: 1,
+      rel: 0,
+      enablejsapi: 1    // позволяет управлять через API при необходимости
+    });
+    // no-cookie домен, чтобы не плодить сторонние куки
+    return `https://www.youtube-nocookie.com/embed/${id}?${p.toString()}`;
+  }
+
+  function mountIframe(id) {
+    const iframe = document.createElement('iframe');
+    iframe.src = buildSrc(id);
+    iframe.title = 'YouTube video';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.allowFullscreen = true;
+    iframe.style.width  = '100%';
+    iframe.style.height = '100%';
+    slot.innerHTML = '';
+    slot.appendChild(iframe);
+  }
+
+  // --- playlist state ---
+  const playlist = btns.map(el => getYouTubeId(el.dataset.yturl)).filter(Boolean);
+  let index = 0;
+
+  function openAt(i) {
+    index = i;
+    mountIframe(playlist[index]);
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    // если видео одно — спрячем стрелки
+    const hasMany = playlist.length > 1;
+    prev.hidden = next.hidden = !hasMany;
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    slot.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  function nextVideo() {
+    if (playlist.length < 2) return;
+    index = (index + 1) % playlist.length;
+    mountIframe(playlist[index]);
+  }
+
+  function prevVideo() {
+    if (playlist.length < 2) return;
+    index = (index - 1 + playlist.length) % playlist.length;
+    mountIframe(playlist[index]);
+  }
+
+  // --- events ---
+  btns.forEach((btn, i) => {
+    btn.addEventListener('click', () => openAt(i));
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target.hasAttribute('data-close')) closeModal();
+  });
+
+  prev.addEventListener('click', prevVideo);
+  next.addEventListener('click', nextVideo);
+
+  window.addEventListener('keydown', (e) => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') nextVideo();
+    if (e.key === 'ArrowLeft')  prevVideo();
+  });
+})();
+</script>
+
 {% endblock %}

@@ -205,7 +205,7 @@
 .product__collection-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .product__collection-desc {
@@ -388,3 +388,51 @@ details[open] .acc__panel>* {
   font-weight: 600;
   text-decoration: underline;
 }
+
+
+@media only screen and (max-width: 1370px) {
+  .product__wrapper{
+    width: 1100px;
+    max-width: initial;
+  }
+  .product__container{
+    width: 100%;
+  }
+
+.product__images{
+  width: 640px;
+}
+  .product__image{
+    width: 300px;
+    height: 300px;
+  }
+  .product__description{
+    width: 380px;
+  }
+  .product__collection-text{
+    font-size: 24px;
+  }
+
+.product__collection-name{
+      font-size: 56px;
+    line-height: 87px;
+}
+.product__collection-description{
+  font-size: 15px;
+    line-height: 33px;
+}
+.product__similar{
+  width: 100%;
+}
+.product__similar-element{
+      width: 230px;
+    height: 330px;
+}
+.product__collection-image {
+  height: 450px;
+    width: 450px;
+    background-color: #e3e3e3;
+}
+}
+
+
