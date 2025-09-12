@@ -147,7 +147,46 @@
           <p>Brand’s design concept</p>
           <h2>RICHH OU</h2>
           <div>Designer RICHH OU spent over four months creating a milestone jewelry piece, a solid 18k gold and platinum pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called CITY. This groundbreaking jewelry piece follows the brand's innovative and avant-garde design style, challenging traditional perceptions of jewelry and establishing a benchmark for the "Parallel Four-Dimensional Aesthetic" system...</div>
-          <button>Read More</button>
+          {# ...внутри .concept__desc... #}
+          <button class="concept__read" id="openConcept" aria-haspopup="dialog" aria-controls="conceptModal">Read More</button>
+        </div>
+      </div>
+    </div>
+    {# модальное окно #}
+    <div class="concept-modal" id="conceptModal" hidden>
+      <div class="concept-modal__overlay" data-close></div>
+
+      <div class="concept-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="conceptModalTitle" tabindex="-1">
+        <button class="concept-modal__close" data-close aria-label="Close">×</button>
+
+        <div class="concept-modal__body">
+          <h2 id="conceptModalTitle">RICHH OU — Brand’s design concept</h2>
+          <div class="concept-modal__content">
+            <!-- Вставь сюда большой текст. Пока пример: -->
+            <p>Designer RICHH OU spent over four months creating a milestone jewelry piece — solid 18k gold and platinum pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called CITY. The piece follows the brand’s innovative and avant-garde design style, challenging traditional perceptions of jewelry and laying a benchmark for the “Parallel Four-Dimensional Aesthetic”.</p>Designer RICHH OU spent over four months creating a milestone jewelry piece, a solid 18k gold and platinum pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called CITY. This groundbreaking jewelry piece follows the brand's innovative and avant-garde design style, challenging traditional perceptions of jewelry and establishing a benchmark for the "Parallel Four-Dimensional Aesthetic" system.<p>In a previous article, we detailed the definition of "Cutting-edge Jewelry Design" style, and interested readers can refer to that for more information.</p>
+
+            <p>OUSVOW Studio: Today, we have jewelry designer RICHH OU with us to talk about the "Parallel Four-Dimensional Aesthetic." Can you explain what it is?</p>
+
+            <p>Designer RICHH OU: As the name suggests, our three-dimensional Earth reality is connected to at least one parallel space. This parallel space is not three-dimensional but multi-dimensional, and I define it as the new four-dimensional space. In this four-dimensional space, individuals and objects may not be depicted as concrete forms as seen in traditional art but also include abstract entities.</p>
+
+            <p>The new four-dimensional space I define is a parallel space shared with the virtual digital space, accessible only through a super wormhole entrance in the virtual world. While the current virtual space has matured to Web2, with Web3 emerging, future development may reach Web100 and beyond. At that point, super-intelligent computers created by humans will dominate the virtual world, having completed self-learning and ultimate evolution. In this scenario, humans can seamlessly navigate between the virtual and real worlds, engaging in activities in four-dimensional space, each person having two identification cards for different spatial authentication.</p>
+
+            <p>The "Parallel Four-Dimensional Aesthetic" system I established breaks all inherent cognitions in Earth's three-dimensional space. It reorganizes and reshapes cultural and aesthetic fragments from different periods, regions, countries, races, and beliefs of human civilization into a new form. In the four-dimensional space, all designs/paintings/music/films far surpass the reality of Earth's three-dimensional world, yet they are built on the foundation of human civilization in the three-dimensional space and incorporate all virtual innovative products, resulting in revolutionary changes. Therefore, in my jewelry design, you can also see condensed symbols of some subcultures from the current three-dimensional space civilization.</p>
+
+            <p>This aesthetic is expected to spread like a virus in the future. As a creator immersed in it, I find it incredibly interesting and satisfying. For me, jewelry is not just jewelry; it is also a vessel carrying my aesthetic art. However, it requires extraordinary creativity and a comprehensive design foundation. The design composition involves basic drawing skills, mastery of 3D technology, and encompasses visual communication, spatial concept design, music composition, film shooting, etc., providing people with a more diverse and integrated new aesthetic sensory experience.</p>
+
+            <p>OUSVOW Studio: Now, please share the design philosophy behind this jewelry set worth 280000$ USD.</p>
+
+            <p>Designer RICHH OU: Firstly, the design inspiration for the elliptical ring shape of the necklace comes from the fastest "speed of light" on Earth. If one could achieve the actual speed of light, the surrounding scenes would appear almost static. So, I hand-drew the shape of light speed and transformed it into a physical form, connecting them with rows of natural, non-fluorescent white diamonds to create the illusion of "light rays." This design also represents the exclusive jewelry patent appearance of the brand worldwide, echoing the first letter "O" of OUSVOW and holding a dual meaning. It has been registered for patent copyright.</p>
+
+            <p>The pendant represents my image in the parallel four-dimensional space and is a member of the CITY jewelry series. As a Chinese person with yellow skin, black eyes, and black hair, I showcase my personal style in this piece. Since childhood, I have questioned everything known, possessing a rebellious trait against mainstream culture. This also signifies my identity as part of the niche culture on Earth. Both the necklace and pendant are crafted from solid 18k gold and platinum components, with a total weight of over 1 kilogram. Due to my meticulous attention to detail, the initial design went through over a month of revisions, and I supervised the craftsmen through several months of overtime work and multiple revisions to achieve my satisfaction.</p>
+
+            <p>The pendant's back net is actually a painting I created, depicting an extraterrestrial higher intelligence being wearing a heart-shaped helmet, piloting a superluminal spaceship to Earth. This being has appeared in my dreams numerous times and, personally, I believe all human trajectories are predetermined by the creator. From the age of 4, when I started drawing, to continually studying and researching aesthetics and related knowledge, becoming a designer and establishing my unique style and aesthetic system, I feel gratified. Hence, I wanted to turn the dream into reality by painting it and using it as the back net for this piece.</p>
+
+            <p>I spent several days personally selecting each diamond through a magnifying glass to ensure uniform color, clarity, and cut for all similar diamonds, maximizing the brilliance of the jewelry. It is adorned with several tens of carats of natural, non-fluorescent F VS white diamonds, natural black diamonds, and natural yellow diamonds. Using exquisite handcrafted super-dense inlaying techniques, there are no visible gaps between the diamonds.</p>
+
+            <p>The two black eyes are inlaid with two hand-polished pieces of natural black agate. The detachable mechanism of the pendant is also a patent I designed. When detached and placed on a table, it stands as a jewelry sculpture of a humanoid from the parallel four-dimensional space, the CITY series. Essentially, "Made in China" does not mean contemporary artisan spirit cannot produce artistic works, but it depends on who designs, supervises, and controls quality.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -240,103 +279,136 @@
     })
   </script>
 
-<script>
-;(function () {
-  const modal = document.getElementById('videoModal');
-  const slot  = document.getElementById('videoPlayer');
-  const btns  = Array.from(document.querySelectorAll('.hero-video [data-yturl]')); // все триггеры на странице
-  const prev  = modal.querySelector('[data-prev]');
-  const next  = modal.querySelector('[data-next]');
+  <script>
+    ;(function () {
+      const modal = document.getElementById('videoModal')
+      const slot = document.getElementById('videoPlayer')
+      const btns = Array.from(document.querySelectorAll('.hero-video [data-yturl]')) // все триггеры на странице
+      const prev = modal.querySelector('[data-prev]')
+      const next = modal.querySelector('[data-next]')
+    
+      if (!modal || !slot) return
+    
+      // --- utils ---
+      function getYouTubeId(url) {
+        try {
+          const u = new URL(url)
+          if (u.hostname.includes('youtu.be')) return u.pathname.slice(1)
+          if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/shorts/')[1].split('/')[0]
+          if (u.searchParams.get('v')) return u.searchParams.get('v')
+          const m = url.match(/(?:embed|shorts|watch\/|v\/)([A-Za-z0-9_-]{11})/)
+          return m ? m[1] : null
+        } catch {
+          return null
+        }
+      }
+    
+      function buildSrc(id) {
+        const p = new URLSearchParams({
+          autoplay: 1,
+          playsinline: 1,
+          modestbranding: 1,
+          rel: 0,
+          enablejsapi: 1 // позволяет управлять через API при необходимости
+        })
+        // no-cookie домен, чтобы не плодить сторонние куки
+        return `https://www.youtube-nocookie.com/embed/${id}?${p.toString()}`
+      }
+    
+      function mountIframe(id) {
+        const iframe = document.createElement('iframe')
+        iframe.src = buildSrc(id)
+        iframe.title = 'YouTube video'
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'
+        iframe.allowFullscreen = true
+        iframe.style.width = '100%'
+        iframe.style.height = '100%'
+        slot.innerHTML = ''
+        slot.appendChild(iframe)
+      }
+    
+      // --- playlist state ---
+      const playlist = btns.map((el) => getYouTubeId(el.dataset.yturl)).filter(Boolean)
+      let index = 0
+    
+      function openAt(i) {
+        index = i
+        mountIframe(playlist[index])
+        modal.hidden = false
+        document.body.style.overflow = 'hidden'
+        // если видео одно — спрячем стрелки
+        const hasMany = playlist.length > 1
+        prev.hidden = next.hidden = !hasMany
+      }
+    
+      function closeModal() {
+        modal.hidden = true
+        slot.innerHTML = ''
+        document.body.style.overflow = ''
+      }
+    
+      function nextVideo() {
+        if (playlist.length < 2) return
+        index = (index + 1) % playlist.length
+        mountIframe(playlist[index])
+      }
+    
+      function prevVideo() {
+        if (playlist.length < 2) return
+        index = (index - 1 + playlist.length) % playlist.length
+        mountIframe(playlist[index])
+      }
+    
+      // --- events ---
+      btns.forEach((btn, i) => {
+        btn.addEventListener('click', () => openAt(i))
+      })
+    
+      modal.addEventListener('click', (e) => {
+        if (e.target.hasAttribute('data-close')) closeModal()
+      })
+    
+      prev.addEventListener('click', prevVideo)
+      next.addEventListener('click', nextVideo)
+    
+      window.addEventListener('keydown', (e) => {
+        if (modal.hidden) return
+        if (e.key === 'Escape') closeModal()
+        if (e.key === 'ArrowRight') nextVideo()
+        if (e.key === 'ArrowLeft') prevVideo()
+      })
+    })()
+  </script>
 
-  if (!modal || !slot) return;
-
-  // --- utils ---
-  function getYouTubeId(url) {
-    try {
-      const u = new URL(url);
-      if (u.hostname.includes('youtu.be')) return u.pathname.slice(1);
-      if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/shorts/')[1].split('/')[0];
-      if (u.searchParams.get('v')) return u.searchParams.get('v');
-      const m = url.match(/(?:embed|shorts|watch\/|v\/)([A-Za-z0-9_-]{11})/);
-      return m ? m[1] : null;
-    } catch { return null; }
-  }
-
-  function buildSrc(id) {
-    const p = new URLSearchParams({
-      autoplay: 1,
-      playsinline: 1,
-      modestbranding: 1,
-      rel: 0,
-      enablejsapi: 1    // позволяет управлять через API при необходимости
-    });
-    // no-cookie домен, чтобы не плодить сторонние куки
-    return `https://www.youtube-nocookie.com/embed/${id}?${p.toString()}`;
-  }
-
-  function mountIframe(id) {
-    const iframe = document.createElement('iframe');
-    iframe.src = buildSrc(id);
-    iframe.title = 'YouTube video';
-    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    iframe.allowFullscreen = true;
-    iframe.style.width  = '100%';
-    iframe.style.height = '100%';
-    slot.innerHTML = '';
-    slot.appendChild(iframe);
-  }
-
-  // --- playlist state ---
-  const playlist = btns.map(el => getYouTubeId(el.dataset.yturl)).filter(Boolean);
-  let index = 0;
-
-  function openAt(i) {
-    index = i;
-    mountIframe(playlist[index]);
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
-    // если видео одно — спрячем стрелки
-    const hasMany = playlist.length > 1;
-    prev.hidden = next.hidden = !hasMany;
-  }
-
-  function closeModal() {
-    modal.hidden = true;
-    slot.innerHTML = '';
-    document.body.style.overflow = '';
-  }
-
-  function nextVideo() {
-    if (playlist.length < 2) return;
-    index = (index + 1) % playlist.length;
-    mountIframe(playlist[index]);
-  }
-
-  function prevVideo() {
-    if (playlist.length < 2) return;
-    index = (index - 1 + playlist.length) % playlist.length;
-    mountIframe(playlist[index]);
-  }
-
-  // --- events ---
-  btns.forEach((btn, i) => {
-    btn.addEventListener('click', () => openAt(i));
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target.hasAttribute('data-close')) closeModal();
-  });
-
-  prev.addEventListener('click', prevVideo);
-  next.addEventListener('click', nextVideo);
-
-  window.addEventListener('keydown', (e) => {
-    if (modal.hidden) return;
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'ArrowRight') nextVideo();
-    if (e.key === 'ArrowLeft')  prevVideo();
-  });
-})();
-</script>
-
+  <script>
+    ;(function () {
+      const openBtn = document.getElementById('openConcept')
+      const modal = document.getElementById('conceptModal')
+      if (!openBtn || !modal) return
+    
+      const dialog = modal.querySelector('.concept-modal__dialog')
+      let lastFocus = null
+    
+      function openModal() {
+        lastFocus = document.activeElement
+        modal.hidden = false
+        document.body.style.overflow = 'hidden'
+        // фокус внутрь
+        if (dialog) dialog.focus()
+      }
+      function closeModal() {
+        modal.hidden = true
+        document.body.style.overflow = ''
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus()
+      }
+    
+      openBtn.addEventListener('click', openModal)
+      modal.addEventListener('click', (e) => {
+        if (e.target.hasAttribute('data-close')) closeModal()
+      })
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) closeModal()
+      })
+    })()
+  </script>
 {% endblock %}
