@@ -91,6 +91,7 @@
   display: flex;
   align-items: center;
   gap: var(--gap);
+  margin-left: 30px;
 }
 
 /* САМИ КАРТИНКИ */

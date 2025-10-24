@@ -1,101 +1,357 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>
-      {% block title %}
-        Jewelry Shop
-      {% endblock %}
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css" />
 
-    {% block extra_css %}
+<head>
+  <meta charset="utf-8" />
+  <title>
+    {% block title %}
+    Jewelry Shop
+    {% endblock %}
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css" />
+
+  {% block extra_css %}
+
+  {% endblock %}
+</head>
+
+<body>
+  <div class="main__wrapper">
+    {# HEADER MENU #}
+    <header>
+      <a href="{% url 'catalog:landing' %}" class="header__logo" aria-label="Go to home">OUSVOW JEWELRY</a>
+      <div class="header__about-menu">
+        <div class="header__about-search">
+          <img src="{% static 'img/common/search-normal.svg' %}" alt="Search icon" />
+        </div>
+        <div class="header__about-burger">
+          <img src="{% static 'img/common/textalign-justifyright.svg' %}" alt="Burger icon" />
+        </div>
+      </div>
+    </header>
+    {# NAVIGTION #}
+    <nav>
+      <div class="navigation__wrapper">
+        <a class="navigation__element" href="{% url 'catalog:list' %}">Products</a>
+        <a class="navigation__element" href="{% url 'catalog:collections' %}">Collections</a>
+       <a class="navigation__element" href="#contact">Contact Us</a>
+      </div>
+    </nav>
+
+    {# MAIN CONTENT HERE #}
+    {% block content %}
 
     {% endblock %}
-  </head>
-  <body>
-    <div class="main__wrapper">
-      {# HEADER MENU #}
-      <header>
-        <a href="{% url 'catalog:landing' %}" class="header__logo" aria-label="Go to home">OUSVOW JEWELRY</a>
-        <div class="header__about-menu">
-          <div class="header__about-search">
-            <img src="{% static 'img/common/search-normal.svg' %}" alt="Search icon" />
-          </div>
-          <div class="header__about-burger">
-            <img src="{% static 'img/common/textalign-justifyright.svg' %}" alt="Burger icon" />
-          </div>
-        </div>
-      </header>
-      {# NAVIGTION #}
-      <nav>
-        <div class="navigation__wrapper">
-          <a class="navigation__element" href="{% url 'catalog:list' %}">Products</a>
-          <a class="navigation__element" href="{% url 'catalog:collections' %}">Collections</a>
-          <a class="navigation__element" href="#">Contact Us</a> {# заглушка #}
-        </div>
-      </nav>
 
-      {# MAIN CONTENT HERE #}
-      {% block content %}
-
-      {% endblock %}
-
-      {# FOOTER #}
-      <footer>
-        <div class="footer__container">
-          <div class="footer__wrapper">
-            {# Footer desc #}
+    {# FOOTER #}
+    <footer id="contact">
+      <div class="footer__container">
+        <div class="footer__wrapper">
+          {# footer chinise logo and social #}
+          <div class="footer__logo-desc">
+            <div class="footer__logo">
+              <img src="{% static 'img/common/chinise.png' %}" alt="" />
+            </div>
             <div class="footer__desc">
-              <h2>OUSVOW JEWELRY</h2>
-              <p>This growth plan will help you reach your resolutions and achieve the goals you have been striving towards.</p>
-              <div class="footer__social">
-                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
-                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
-                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
-                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
-                <a href="#" class="footer__element"><img src="{% static 'img/common/facebook.svg' %}" alt="" /></a>
-              </div>
+              <p>Is a high-end jewelry brand founded by jewelry designer RICHH OU，was established in 2016. </p>
             </div>
-
-            {# Footer navigation #}
-            <div class="footer__navigation">
-              <div class="footer__navigation-element">
-                <h4>Navigation Name</h4>
-                <p>About</p>
-                <p>We Are</p>
-                <p>Test t</p>
-                <p>Contact</p>
-              </div>
+            <div class="footer__social">
+              <a href="#" class="footer__social-element">
+                <img src="{% static 'img/common/facebook.svg' %}" alt="">
+              </a>
+              <a href="#" class="footer__social-element">
+                <img src="{% static 'img/common/facebook.svg' %}" alt="">
+              </a>
+              <a href="#" class="footer__social-element">
+                <img src="{% static 'img/common/facebook.svg' %}" alt="">
+              </a>
+              <a href="#" class="footer__social-element">
+                <img src="{% static 'img/common/facebook.svg' %}" alt="">
+              </a>
+              <a href="#" class="footer__social-element">
+                <img src="{% static 'img/common/facebook.svg' %}" alt="">
+              </a>
             </div>
           </div>
+          {# ---------------- #}
+          {# footer contact form #}
+          <div class="footer__contact-form">
+            {# footer logo #}
+            <div class="footer__contact-name">
+              <div class="footer__contact-image">
+                <img src="{% static 'img/common/CONTACT.svg' %}" alt="">
+              </div>
+            </div>
+            {# form #}
+            <form action="" class="footer__form">
+              <div class="form__elements">
+                <div class="form__element">
+                  <input type="text" placeholder="Your name">
+                </div>
+                <div class="form__element">
+                  <input type="email" placeholder="Email">
+                </div>
+              </div>
+              <div class="form__elements">
+                <div class="form__element">
+                  <!-- скрытое поле, которое реально отправится в форму -->
+                  <input type="hidden" name="contact_reason" id="contact_reason" value="">
 
-          {# Footer created and rights #}
-          <div class="footer__rights-created">
-            <div class="footer__created">
-              <a href="#"><img src="{% static 'img/common/logo_big.png' %}" alt="" /></a>
-            </div>
-            <div class="footer__rights">
-              ©{% now 'Y' %} Ousvow Jewelry. All rights reserved.
-            </div>
+                  <!-- кастомный селект -->
+                  <div class="custom-select" data-name="contact_reason" data-placeholder="How can we turn-back?*">
+                    <button type="button" class="custom-select__trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select__label">How can we turn-back?*</span>
+                      <span class="custom-select__arrow" aria-hidden="true">▾</span>
+                    </button>
+
+                    <ul class="custom-select__dropdown" role="listbox" tabindex="-1">
+                      <li class="custom-select__option" role="option" data-value="call">Call me back</li>
+                      <li class="custom-select__option" role="option" data-value="whatsapp">WhatsApp</li>
+                      <li class="custom-select__option" role="option" data-value="email">E-mail</li>
+                      <li class="custom-select__option" role="option" data-value="telegram">Telegram</li>
+                    </ul>
+                  </div>
+
+                  <!-- контейнер для ошибки -->
+                  <div class="form__error"></div>
+                </div>
+
+                <div class="form__element">
+                  <input type="number" placeholder="Phone">
+                </div>
+              </div>
+              <div class="form__elements">
+                <textarea name="" id="" placeholder="Message"></textarea>
+              </div>
+              <div class="form__submit">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+          {# ---------------- #}
+
+        </div>
+
+        {# Footer created and rights #}
+        <div class="footer__rights-created">
+          <div class="footer__created">
+            <a href="#"><img src="{% static 'img/common/logo_big.png' %}" alt="" /></a>
+          </div>
+          <div class="footer__rights">
+            ©{% now 'Y' %} Ousvow Jewelry. All rights reserved.
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
+  </div>
 
-    <!-- общий js -->
-    <script src="{% static 'js/main.js' %}"></script>
-    <!-- сюда страницы подставят свой js -->
-    {% block extra_js %}
+  <!-- общий js -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <!-- сюда страницы подставят свой js -->
+  {% block extra_js %}
 
-    {% endblock %}
+  {% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/plyr@3"></script>
-    <script>
-      const player = new Plyr('#plyr', { youtube: { rel: 0, modestbranding: 1 } })
-    </script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3"></script>
+  <script>
+    const player = new Plyr('#plyr', { youtube: { rel: 0, modestbranding: 1 } })
+  </script>
+<script>
+(function() {
+  // ===== helpers =====
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+  function setError(container, message) {
+    container.classList.add('error');
+    const err = container.querySelector('.form__error') || (function() {
+      const e = document.createElement('div'); e.className = 'form__error'; container.appendChild(e); return e;
+    })();
+    err.textContent = message || '';
+  }
+  function clearError(container) {
+    container.classList.remove('error');
+    const err = container.querySelector('.form__error');
+    if (err) err.textContent = '';
+  }
+
+  // ===== custom select =====
+  document.querySelectorAll('.custom-select').forEach(select => {
+    const trigger = select.querySelector('.custom-select__trigger');
+    const dropdown = select.querySelector('.custom-select__dropdown');
+    const labelEl = select.querySelector('.custom-select__label');
+    const hiddenInputName = select.dataset.name || 'custom';
+    const placeholder = select.dataset.placeholder || 'Select...';
+
+    // скрытый input
+    let hidden = document.getElementById(hiddenInputName);
+    if (!hidden) {
+      hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = hiddenInputName;
+      hidden.id = hiddenInputName;
+      select.parentElement.appendChild(hidden);
+    }
+
+    function open() {
+      select.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+      dropdown.focus({ preventScroll: true });
+    }
+    function close() {
+      select.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      select.classList.contains('open') ? close() : open();
+    });
+
+    dropdown.querySelectorAll('.custom-select__option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        dropdown.querySelectorAll('.custom-select__option').forEach(o => o.removeAttribute('aria-selected'));
+        opt.setAttribute('aria-selected', 'true');
+        const value = opt.dataset.value || opt.textContent.trim();
+        labelEl.textContent = opt.textContent.trim();
+        hidden.value = value;
+        close();
+        clearError(select);
+      });
+    });
+
+    document.addEventListener('click', (e) => { if (!select.contains(e.target)) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+    labelEl.textContent = placeholder;
+  });
+
+  // ===== validation & submit =====
+  const form = document.querySelector('.footer__form');
+  if (!form) return;
+
+  // заранее создадим success-блок
+  let success = form.querySelector('.form__success');
+  if (!success) {
+    success = document.createElement('div');
+    success.className = 'form__success';
+    success.textContent = 'Your request has been sent. We will contact you soon.';
+    // покажем его после блока отправки
+    const submitWrap = form.querySelector('.form__submit');
+    if (submitWrap && submitWrap.parentNode) submitWrap.parentNode.insertBefore(success, submitWrap.nextSibling);
+    else form.appendChild(success);
+  }
+
+  form.addEventListener('submit', function(e) {
+    let valid = true;
+
+    // name
+    const nameEl = form.querySelector('input[type="text"]');
+    const nameWrap = nameEl.closest('.form__element') || nameEl.parentElement;
+    clearError(nameWrap);
+    if (!nameEl.value.trim()) {
+      setError(nameWrap, 'Please enter your name');
+      valid = false;
+    }
+
+    // email
+    const emailEl = form.querySelector('input[type="email"]');
+    const emailWrap = emailEl.closest('.form__element') || emailEl.parentElement;
+    clearError(emailWrap);
+    if (!emailRe.test(emailEl.value.trim())) {
+      setError(emailWrap, 'Please enter a valid email');
+      valid = false;
+    }
+
+    // custom select
+    const selectWrap = form.querySelector('.custom-select')?.closest('.form__element');
+    const hiddenSelect = form.querySelector('input[type="hidden"][name="contact_reason"]');
+    if (selectWrap && hiddenSelect) {
+      clearError(selectWrap);
+      if (!hiddenSelect.value) {
+        setError(selectWrap.querySelector('.custom-select') || selectWrap, 'Please choose an option');
+        selectWrap.classList.add('error');
+        valid = false;
+      }
+    }
+
+    // phone
+    const phoneEl = form.querySelector('input[type="number"]');
+    const phoneWrap = phoneEl?.closest('.form__element') || phoneEl?.parentElement;
+    if (phoneEl && phoneWrap) {
+      clearError(phoneWrap);
+      const digits = (phoneEl.value || '').replace(/\D/g, '');
+      if (digits.length < 7) {
+        setError(phoneWrap, 'Please enter a valid phone');
+        valid = false;
+      }
+    }
+
+    // message
+    const msgEl = form.querySelector('textarea');
+    const msgWrap = msgEl?.closest('.form__elements') || msgEl?.parentElement;
+    if (msgEl && msgWrap) {
+      let err = msgWrap.querySelector('.form__error');
+      if (!err) { err = document.createElement('div'); err.className = 'form__error'; msgWrap.appendChild(err); }
+      msgEl.classList.remove('error');
+      err.textContent = '';
+      if (!msgEl.value.trim()) {
+        msgEl.classList.add('error');
+        err.textContent = 'Please enter your message';
+        valid = false;
+      }
+    }
+
+    if (!valid) { e.preventDefault(); return; }
+
+    // Заглушка «успешно отправлено»
+    e.preventDefault();
+
+    // убрать кнопку submit
+    const submitWrap = form.querySelector('.form__submit');
+    const submitBtn = submitWrap?.querySelector('button');
+    if (submitBtn) submitBtn.remove();
+
+    // показать success-блок
+    success.classList.add('show');
+
+    // Сделать форму пассивной (чтобы не отправляли повторно)
+    Array.from(form.elements).forEach(el => {
+      if (el.tagName === 'BUTTON') return;
+      el.setAttribute('disabled', 'disabled');
+    });
+
+    // можно доскроллить к сообщению
+    success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>
+<script>
+(function(){
+  function scrollToContact(e){
+    const link = e.currentTarget;
+    const href = link.getAttribute('href') || '';
+    if (!href.includes('#contact')) return; // другие ссылки не трогаем
+    e.preventDefault();
+    const target = document.getElementById('contact');
+    if (!target) return;
+
+    const header = document.querySelector('header');
+    const headerH = header ? header.getBoundingClientRect().height : 0;
+    const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 16; // -16px отступ
+
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  // навешиваем на все ссылки, ведущие к #contact
+  document.querySelectorAll('a[href="#contact"]').forEach(a=>{
+    a.addEventListener('click', scrollToContact);
+  });
+})();
+</script>
+
+
+</body>
+
 </html>
