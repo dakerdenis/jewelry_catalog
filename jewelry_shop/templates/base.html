@@ -22,7 +22,11 @@
   <div class="main__wrapper">
     {# HEADER MENU #}
     <header>
-      <a href="{% url 'catalog:landing' %}" class="header__logo" aria-label="Go to home">OUSVOW JEWELRY</a>
+      <a href="{% url 'catalog:landing' %}" class="header__logo" aria-label="Go to home">
+        <img class="header__logo-eng" src="{%  static 'img/common/logo.png' %}" alt="" srcset="">
+        <p>OUSVOW JEWELRY</p>
+        <img src="{% static 'img/common/chinise.png' %}" alt="" class="header__logo-chn">
+      </a>
       <div class="header__about-menu">
         <div class="header__about-search">
           <img src="{% static 'img/common/search-normal.svg' %}" alt="Search icon" />
