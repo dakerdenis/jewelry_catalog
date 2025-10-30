@@ -510,4 +510,40 @@ footer {
   header {
     padding: 0 10px 0 35px;
   }
+    .footer__contact-form{
+    display: flex;
+    flex-direction: column;
+    height: initial;
+    width: 100%;
+  }
+  .footer__contact-name{
+    display: none;
+    visibility: hidden;
+  }
+  .footer__form{
+    width: 100%;
+    height: initial;
+    margin-left: 0px;
+  }
+  .form__elements{
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .form__element{
+    margin-bottom: 10px;
+  }
+  .form__element{
+    width: 100%;
+  }.footer__logo-desc{
+    width: 100%;
+    margin-top: 20px;
+  }
+  header a img{
+    height: 65%;
+  }
+  .header__about-menu{
+    display: none;
+    visibility: hidden;
+  }
+  
 }

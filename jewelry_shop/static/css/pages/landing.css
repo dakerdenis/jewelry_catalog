@@ -93,7 +93,18 @@
   gap: var(--gap);
   margin-left: 30px;
 }
-
+.animation-desc{
+  display: flex;
+  height: 95px;
+  margin-left: 40px;
+}
+.animation-desc img {
+  height: 100%;
+}
+.animation-desc img:nth-child(2){
+  margin-left: 10px;
+  margin-right: 10px;
+}
 /* САМИ КАРТИНКИ */
 .landing__animation img {
   height: var(--img-h);
@@ -226,6 +237,10 @@
 
   margin-right: 40px;
   cursor: pointer;
+}
+.collections__image{
+    width: 420px;
+    height: 420px;
 }
 .collections__image img{
   width:100%;
@@ -417,7 +432,7 @@
 }
 .gold__image img {
   height: 100%;
-  width: 100%;
+
   object-fit: cover;
 }
 
@@ -994,4 +1009,7 @@
   .sing__field button {
     width: 130px;
   }
+.animation-desc{
+    margin-left: 0px;
+}
 }

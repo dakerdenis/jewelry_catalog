@@ -2,295 +2,397 @@
 {% load static %}
 
 {% block title %}
-  OUSVOW JEWELRY — Jewelry Shop
+OUSVOW JEWELRY — Jewelry Shop
 {% endblock %}
 
 {% block body_class %}
-  page-landing
+page-landing
 {% endblock %}
 
 {% block extra_css %}
-  <link href="{% static 'css/pages/landing.css' %}" rel="stylesheet" />
+<link href="{% static 'css/pages/landing.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
-  {# # lANDING PAGE WRAPPER #}
-  <div class="landing__wrapper">
-    {# LANDING MAIN SCREEEN #}
-    <div class="landing__main">
-      <div class="landing__main-back">
-        <img src="{% static 'img/landing/main-back.jpg' %}" alt="OUSVOW JEWELRY RING" />
-      </div>
-
-      <div class="landing__main-text">
-        <h2>OUSVOW JEWELRY</h2>
-        <p>Is a high-end jewelry brand founded by jewelry designer RICHH OU，was established in 2016.</p>
-        <p>The brand uses 18k gold as its main material and incorporates various natural diamonds and colored gemstones.</p>
-      </div>
+{# # lANDING PAGE WRAPPER #}
+<div class="landing__wrapper">
+  {# LANDING MAIN SCREEEN #}
+  <div class="landing__main">
+    <div class="landing__main-back">
+      <img src="{% static 'img/landing/main-back.jpg' %}" alt="OUSVOW JEWELRY RING" />
     </div>
 
-    {# LANDING ANIMATIONS #}
-    {# LANDING ANIMATIONS #}
-    <div class="landing__animation" aria-hidden="true">
-      <div class="landing__animation-track">
-        <div class="landing__animation-set">
+    <div class="landing__main-text">
+      <h2>OUSVOW JEWELRY</h2>
+      <p>Is a high-end jewelry brand founded by jewelry designer RICHH OU，was established in 2016.</p>
+      <p>The brand uses 18k gold as its main material and incorporates various natural diamonds and colored gemstones.
+      </p>
+    </div>
+  </div>
+
+  {# LANDING ANIMATIONS #}
+  {# LANDING ANIMATIONS #}
+  <div class="landing__animation" aria-hidden="true">
+    <div class="landing__animation-track">
+      <div class="landing__animation-set">
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
+        </div>
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
+        </div>
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
+        </div>
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
-
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
         </div>
-        <br>
-        <!-- вторую партию НЕ меняем (должна быть 1-в-1) -->
-        <div class="landing__animation-set">
+
+      </div>
+      <br>
+      <!-- вторую партию НЕ меняем (должна быть 1-в-1) -->
+      <div class="landing__animation-set">
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
+        </div>
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
+        </div>
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
+        </div>
+        <div class="animation-desc">
+          <img src="{%  static 'img/common/logo.png' %}" alt="">
           <img src="{% static 'img/landing/OUSVOW.svg' %}" alt="" />
-        </div>
-      </div>
-    </div>
-
-    {# LANDING OUR STORY #}
-    <div class="landing__story">
-      <div class="story__wrapper">
-        <div class="story__image">
-          <img src="{% static 'img/landing/ring.png' %}" alt="" />
-        </div>
-        <div class="story__content">
-          <h2>Our Story</h2>
-          <p>Each piece of OUSVOW JEWELRY is a unique and cutting-edge original design, meticulously handcraed with exceptional quality, exquisite crasmanship, avant-garde aesthetics, and attention to detail.</p>
-          <p>OUSVOW aims to provide its customers with a new visual</p>
-          <p>feast and brand experience, Its unique "parallel four-dimensional aesthetic system" and "cutting-edge jewelry design style" subvert everyone's understanding of jewelry, combining playfulness and artistry.</p>
-        </div>
-      </div>
-    </div>
-
-    {# LANDING COLLECTIONS #}
-    <div class="landing__collections">
-      <div class="collections__wrapper">
-        <div class="collections__text">
-          <h2>Jewelry product lines tells eternal stories</h2>
-          <div class="collections__text-container">
-            <p>Test Collection</p>
-            <p>City</p>
-            <p>Jade</p>
-            <p>Future</p>
-          </div>
-        </div>
-
-        <div class="collections__image">
-          <img src="{% static 'img/landing/ring2.png' %}" alt="" />
-        </div>
-      </div>
-    </div>
-
-    {# LANDING GOODS #}
-    {# LANDING GOODS #}
-    <div class="landing__goods">
-      <div class="goods__wrapper">
-        {% if landing_goods %}
-          {% for p in landing_goods %}
-            {% with img=p.images.all|first %}
-              {# Чередуем раскладку: для 1-го — картинка слева, для 2-го — справа #}
-              {% if forloop.counter|divisibleby:2 %}
-                <div class="goods__element">
-                  <div class="goods__element-desc">
-                    <div class="goods__element-name">{{ p.name }}</div>
-                    <div class="goods__element-text">{{ p.description|default:'' }}</div>
-                    <div class="goods__element-price">
-                      <span>{{ p.price }}</span> $
-                    </div>
-                  </div>
-                  <div class="goods__element-image">
-                    <a href="{{ p.get_absolute_url }}">
-                      {% if img %}
-                        <img src="{{ img.image.url }}" alt="{{ p.name }}" />
-                      {% else %}
-                        <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
-                      {% endif %}
-                    </a>
-                  </div>
-                </div>
-              {% else %}
-                <div class="goods__element">
-                  <div class="goods__element-image">
-                    <a href="{{ p.get_absolute_url }}">
-                      {% if img %}
-                        <img src="{{ img.image.url }}" alt="{{ p.name }}" />
-                      {% else %}
-                        <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
-                      {% endif %}
-                    </a>
-                  </div>
-                  <div class="goods__element-desc">
-                    <div class="goods__element-name">{{ p.name }}</div>
-                    <div class="goods__element-text">{{ p.description|default:'' }}</div>
-                    <div class="goods__element-price">
-                      <span>{{ p.price }}</span> $
-                    </div>
-                  </div>
-                </div>
-              {% endif %}
-            {% endwith %}
-          {% endfor %}
-        {% endif %}
-      </div>
-    </div>
-
-    {# LANDING CONCEPT #}
-    <div class="landind__concept">
-      <div class="concept__wrapper">
-        <div class="concept__image">
-          <img src="{% static 'img/landing/ou.png' %}" alt="" />
-        </div>
-
-        <div class="concept__desc">
-          <p>Brand’s design concept</p>
-          <h2>RICHH OU</h2>
-          <div>Designer RICHH OU spent over four months creating a milestone jewelry piece, a solid 18k gold and platinum pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called CITY. This groundbreaking jewelry piece follows the brand's innovative and avant-garde design style, challenging traditional perceptions of jewelry and establishing a benchmark for the "Parallel Four-Dimensional Aesthetic" system...</div>
-          {# ...внутри .concept__desc... #}
-          <button class="concept__read" id="openConcept" aria-haspopup="dialog" aria-controls="conceptModal">Read More</button>
-        </div>
-      </div>
-    </div>
-    {# модальное окно #}
-    <div class="concept-modal" id="conceptModal" hidden>
-      <div class="concept-modal__overlay" data-close></div>
-
-      <div class="concept-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="conceptModalTitle" tabindex="-1">
-        <button class="concept-modal__close" data-close aria-label="Close">×</button>
-
-        <div class="concept-modal__body">
-          <h2 id="conceptModalTitle">RICHH OU — Brand’s design concept</h2>
-          <div class="concept-modal__content">
-            <!-- Вставь сюда большой текст. Пока пример: -->
-            <p>Designer RICHH OU spent over four months creating a milestone jewelry piece — solid 18k gold and platinum pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called CITY. The piece follows the brand’s innovative and avant-garde design style, challenging traditional perceptions of jewelry and laying a benchmark for the “Parallel Four-Dimensional Aesthetic”.</p>Designer RICHH OU spent over four months creating a milestone jewelry piece, a solid 18k gold and platinum pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called CITY. This groundbreaking jewelry piece follows the brand's innovative and avant-garde design style, challenging traditional perceptions of jewelry and establishing a benchmark for the "Parallel Four-Dimensional Aesthetic" system.<p>In a previous article, we detailed the definition of "Cutting-edge Jewelry Design" style, and interested readers can refer to that for more information.</p>
-
-            <p>OUSVOW Studio: Today, we have jewelry designer RICHH OU with us to talk about the "Parallel Four-Dimensional Aesthetic." Can you explain what it is?</p>
-
-            <p>Designer RICHH OU: As the name suggests, our three-dimensional Earth reality is connected to at least one parallel space. This parallel space is not three-dimensional but multi-dimensional, and I define it as the new four-dimensional space. In this four-dimensional space, individuals and objects may not be depicted as concrete forms as seen in traditional art but also include abstract entities.</p>
-
-            <p>The new four-dimensional space I define is a parallel space shared with the virtual digital space, accessible only through a super wormhole entrance in the virtual world. While the current virtual space has matured to Web2, with Web3 emerging, future development may reach Web100 and beyond. At that point, super-intelligent computers created by humans will dominate the virtual world, having completed self-learning and ultimate evolution. In this scenario, humans can seamlessly navigate between the virtual and real worlds, engaging in activities in four-dimensional space, each person having two identification cards for different spatial authentication.</p>
-
-            <p>The "Parallel Four-Dimensional Aesthetic" system I established breaks all inherent cognitions in Earth's three-dimensional space. It reorganizes and reshapes cultural and aesthetic fragments from different periods, regions, countries, races, and beliefs of human civilization into a new form. In the four-dimensional space, all designs/paintings/music/films far surpass the reality of Earth's three-dimensional world, yet they are built on the foundation of human civilization in the three-dimensional space and incorporate all virtual innovative products, resulting in revolutionary changes. Therefore, in my jewelry design, you can also see condensed symbols of some subcultures from the current three-dimensional space civilization.</p>
-
-            <p>This aesthetic is expected to spread like a virus in the future. As a creator immersed in it, I find it incredibly interesting and satisfying. For me, jewelry is not just jewelry; it is also a vessel carrying my aesthetic art. However, it requires extraordinary creativity and a comprehensive design foundation. The design composition involves basic drawing skills, mastery of 3D technology, and encompasses visual communication, spatial concept design, music composition, film shooting, etc., providing people with a more diverse and integrated new aesthetic sensory experience.</p>
-
-            <p>OUSVOW Studio: Now, please share the design philosophy behind this jewelry set worth 280000$ USD.</p>
-
-            <p>Designer RICHH OU: Firstly, the design inspiration for the elliptical ring shape of the necklace comes from the fastest "speed of light" on Earth. If one could achieve the actual speed of light, the surrounding scenes would appear almost static. So, I hand-drew the shape of light speed and transformed it into a physical form, connecting them with rows of natural, non-fluorescent white diamonds to create the illusion of "light rays." This design also represents the exclusive jewelry patent appearance of the brand worldwide, echoing the first letter "O" of OUSVOW and holding a dual meaning. It has been registered for patent copyright.</p>
-
-            <p>The pendant represents my image in the parallel four-dimensional space and is a member of the CITY jewelry series. As a Chinese person with yellow skin, black eyes, and black hair, I showcase my personal style in this piece. Since childhood, I have questioned everything known, possessing a rebellious trait against mainstream culture. This also signifies my identity as part of the niche culture on Earth. Both the necklace and pendant are crafted from solid 18k gold and platinum components, with a total weight of over 1 kilogram. Due to my meticulous attention to detail, the initial design went through over a month of revisions, and I supervised the craftsmen through several months of overtime work and multiple revisions to achieve my satisfaction.</p>
-
-            <p>The pendant's back net is actually a painting I created, depicting an extraterrestrial higher intelligence being wearing a heart-shaped helmet, piloting a superluminal spaceship to Earth. This being has appeared in my dreams numerous times and, personally, I believe all human trajectories are predetermined by the creator. From the age of 4, when I started drawing, to continually studying and researching aesthetics and related knowledge, becoming a designer and establishing my unique style and aesthetic system, I feel gratified. Hence, I wanted to turn the dream into reality by painting it and using it as the back net for this piece.</p>
-
-            <p>I spent several days personally selecting each diamond through a magnifying glass to ensure uniform color, clarity, and cut for all similar diamonds, maximizing the brilliance of the jewelry. It is adorned with several tens of carats of natural, non-fluorescent F VS white diamonds, natural black diamonds, and natural yellow diamonds. Using exquisite handcrafted super-dense inlaying techniques, there are no visible gaps between the diamonds.</p>
-
-            <p>The two black eyes are inlaid with two hand-polished pieces of natural black agate. The detachable mechanism of the pendant is also a patent I designed. When detached and placed on a table, it stands as a jewelry sculpture of a humanoid from the parallel four-dimensional space, the CITY series. Essentially, "Made in China" does not mean contemporary artisan spirit cannot produce artistic works, but it depends on who designs, supervises, and controls quality.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {# LANDING GOLD #}
-    <div class="landing__gold">
-      <div class="gold__wrapper">
-        <div class="gold__text">
-          <h2>100% Gold</h2>
-          <p>Lorem ipsum dolor sit amet consectetur. Dolor et volutpat in non. Luctus sit libero urna viverra sed non dui elementum Dolor et volutpat in non. Luctus sit libero urna viverra .</p>
-        </div>
-        <div class="gold__image">
-          <img src="{% static 'img/landing/gold.jpg' %}" alt="" />
-        </div>
-      </div>
-    </div>
-
-    <section class="hero-video">
-      <!-- любой фон/текст... -->
-      <div class="hero-video__thumbs">
-        <button class="hero-video__play" data-yturl="https://youtube.com/shorts/zpHBbHwFHDM"><img src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
-        <button class="hero-video__play" data-yturl="https://www.youtube.com/watch?v=eoRLoPYi73Y"><img src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
-        <!-- добавляй сколько нужно -->
-      </div>
-    </section>
-
-    <!-- Modal -->
-    <div class="video-modal" id="videoModal" hidden>
-      <div class="video-modal__overlay" data-close></div>
-      <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-label="Video">
-        <button class="video-modal__close" data-close aria-label="Close">×</button>
-
-        <!-- Кнопки навигации по плейлисту -->
-        <button class="video-modal__nav video-modal__prev" data-prev aria-label="Previous">‹</button>
-        <button class="video-modal__nav video-modal__next" data-next aria-label="Next">›</button>
-
-        <div class="video-modal__player" id="videoPlayer"></div>
-      </div>
-    </div>
-
-    {# LANDING 3 Goods #}
-    {% if landing_three %}
-      <div class="landing__3element">
-        <div class="elements__wrapper">
-          {% for p in landing_three %}
-            <div class="elements-element">
-              <div class="elements-img">
-                {% with img=p.images.all|first %}
-                  <a href="{{ p.get_absolute_url }}">
-                    {% if img %}
-                      <img src="{{ img.image.url }}" alt="{{ p.name }}" />
-                    {% else %}
-                      <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
-                    {% endif %}
-                  </a>
-                {% endwith %}
-              </div>
-              <div class="elements-desc">
-                <div class="elements-name">{{ p.name }}</div>
-                <div class="elements-price">{{ p.price }} $</div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-
-    {# LANDING SIGN UP #}
-    <div class="langind__sing">
-      <div class="sing__wrapper">
-        <div class="sing__desc">
-          <h2>Get the Latest From Ousvow</h2>
-          <p>Be the first to hear about new arrivals, promotions, style inspiration and exclusive sneak peeks.</p>
-        </div>
-        <div class="sing__field">
-          <form action="#">
-            <input placeholder="Enter email address" type="text" />
-            <button>SING UP</button>
-          </form>
+          <img src="{%  static 'img/common/chinise.png' %}" alt="">
         </div>
       </div>
     </div>
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const track = document.querySelector('.landing__animation-track')
-      if (track && track.children.length === 1) {
-        track.appendChild(track.firstElementChild.cloneNode(true))
-      }
-    })
-  </script>
 
-  <script>
-    ;(function () {
+  {# LANDING OUR STORY #}
+  <div class="landing__story">
+    <div class="story__wrapper">
+      <div class="story__image">
+        <img src="{% static 'img/landing/avb.jpg' %}" alt="" />
+      </div>
+      <div class="story__content">
+        <h2>Our Story</h2>
+        <p>Each piece of OUSVOW JEWELRY is a unique and cutting-edge original design, meticulously handcraed with
+          exceptional quality, exquisite crasmanship, avant-garde aesthetics, and attention to detail.</p>
+        <p>OUSVOW aims to provide its customers with a new visual</p>
+        <p>feast and brand experience, Its unique "parallel four-dimensional aesthetic system" and "cutting-edge jewelry
+          design style" subvert everyone's understanding of jewelry, combining playfulness and artistry.</p>
+      </div>
+    </div>
+  </div>
+
+  {# LANDING COLLECTIONS #}
+  <div class="landing__collections">
+    <div class="collections__wrapper">
+      <div class="collections__text">
+        <h2>Jewelry product lines tells eternal stories</h2>
+        <div class="collections__text-container">
+          <p>Test Collection</p>
+          <p>City</p>
+          <p>Jade</p>
+          <p>Future</p>
+        </div>
+      </div>
+
+      <div class="collections__image">
+        <img src="{% static 'img/landing/avv.jpg' %}" alt="" />
+      </div>
+    </div>
+  </div>
+
+  {# LANDING GOODS #}
+  {# LANDING GOODS #}
+  <div class="landing__goods">
+    <div class="goods__wrapper">
+      {% if landing_goods %}
+      {% for p in landing_goods %}
+      {% with img=p.images.all|first %}
+      {# Чередуем раскладку: для 1-го — картинка слева, для 2-го — справа #}
+      {% if forloop.counter|divisibleby:2 %}
+      <div class="goods__element">
+        <div class="goods__element-desc">
+          <div class="goods__element-name">{{ p.name }}</div>
+          <div class="goods__element-text">{{ p.description|default:'' }}</div>
+          <div class="goods__element-price">
+            <span>{{ p.price }}</span> $
+          </div>
+        </div>
+        <div class="goods__element-image">
+          <a href="{{ p.get_absolute_url }}">
+            {% if img %}
+            <img src="{{ img.image.url }}" alt="{{ p.name }}" />
+            {% else %}
+            <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
+            {% endif %}
+          </a>
+        </div>
+      </div>
+      {% else %}
+      <div class="goods__element">
+        <div class="goods__element-image">
+          <a href="{{ p.get_absolute_url }}">
+            {% if img %}
+            <img src="{{ img.image.url }}" alt="{{ p.name }}" />
+            {% else %}
+            <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
+            {% endif %}
+          </a>
+        </div>
+        <div class="goods__element-desc">
+          <div class="goods__element-name">{{ p.name }}</div>
+          <div class="goods__element-text">{{ p.description|default:'' }}</div>
+          <div class="goods__element-price">
+            <span>{{ p.price }}</span> $
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endwith %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+  {# LANDING CONCEPT #}
+  <div class="landind__concept">
+    <div class="concept__wrapper">
+      <div class="concept__image">
+        <img src="{% static 'img/landing/ou.png' %}" alt="" />
+      </div>
+
+      <div class="concept__desc">
+        <p>Brand’s design concept</p>
+        <h2>RICHH OU</h2>
+        <div>Designer RICHH OU spent over four months creating a milestone jewelry piece, a solid 18k gold and platinum
+          pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called
+          CITY. This groundbreaking jewelry piece follows the brand's innovative and avant-garde design style,
+          challenging traditional perceptions of jewelry and establishing a benchmark for the "Parallel Four-Dimensional
+          Aesthetic" system...</div>
+        {# ...внутри .concept__desc... #}
+        <button class="concept__read" id="openConcept" aria-haspopup="dialog" aria-controls="conceptModal">Read
+          More</button>
+      </div>
+    </div>
+  </div>
+  {# модальное окно #}
+  <div class="concept-modal" id="conceptModal" hidden>
+    <div class="concept-modal__overlay" data-close></div>
+
+    <div class="concept-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="conceptModalTitle"
+      tabindex="-1">
+      <button class="concept-modal__close" data-close aria-label="Close">×</button>
+
+      <div class="concept-modal__body">
+        <h2 id="conceptModalTitle">RICHH OU — Brand’s design concept</h2>
+        <div class="concept-modal__content">
+          <!-- Вставь сюда большой текст. Пока пример: -->
+          <p>Designer RICHH OU spent over four months creating a milestone jewelry piece — solid 18k gold and platinum
+            pendant and necklace set representing his exclusive portrait in the parallel four-dimensional space called
+            CITY. The piece follows the brand’s innovative and avant-garde design style, challenging traditional
+            perceptions of jewelry and laying a benchmark for the “Parallel Four-Dimensional Aesthetic”.</p>Designer
+          RICHH OU spent over four months creating a milestone jewelry piece, a solid 18k gold and platinum pendant and
+          necklace set representing his exclusive portrait in the parallel four-dimensional space called CITY. This
+          groundbreaking jewelry piece follows the brand's innovative and avant-garde design style, challenging
+          traditional perceptions of jewelry and establishing a benchmark for the "Parallel Four-Dimensional Aesthetic"
+          system.<p>In a previous article, we detailed the definition of "Cutting-edge Jewelry Design" style, and
+            interested readers can refer to that for more information.</p>
+
+          <p>OUSVOW Studio: Today, we have jewelry designer RICHH OU with us to talk about the "Parallel
+            Four-Dimensional Aesthetic." Can you explain what it is?</p>
+
+          <p>Designer RICHH OU: As the name suggests, our three-dimensional Earth reality is connected to at least one
+            parallel space. This parallel space is not three-dimensional but multi-dimensional, and I define it as the
+            new four-dimensional space. In this four-dimensional space, individuals and objects may not be depicted as
+            concrete forms as seen in traditional art but also include abstract entities.</p>
+
+          <p>The new four-dimensional space I define is a parallel space shared with the virtual digital space,
+            accessible only through a super wormhole entrance in the virtual world. While the current virtual space has
+            matured to Web2, with Web3 emerging, future development may reach Web100 and beyond. At that point,
+            super-intelligent computers created by humans will dominate the virtual world, having completed
+            self-learning and ultimate evolution. In this scenario, humans can seamlessly navigate between the virtual
+            and real worlds, engaging in activities in four-dimensional space, each person having two identification
+            cards for different spatial authentication.</p>
+
+          <p>The "Parallel Four-Dimensional Aesthetic" system I established breaks all inherent cognitions in Earth's
+            three-dimensional space. It reorganizes and reshapes cultural and aesthetic fragments from different
+            periods, regions, countries, races, and beliefs of human civilization into a new form. In the
+            four-dimensional space, all designs/paintings/music/films far surpass the reality of Earth's
+            three-dimensional world, yet they are built on the foundation of human civilization in the three-dimensional
+            space and incorporate all virtual innovative products, resulting in revolutionary changes. Therefore, in my
+            jewelry design, you can also see condensed symbols of some subcultures from the current three-dimensional
+            space civilization.</p>
+
+          <p>This aesthetic is expected to spread like a virus in the future. As a creator immersed in it, I find it
+            incredibly interesting and satisfying. For me, jewelry is not just jewelry; it is also a vessel carrying my
+            aesthetic art. However, it requires extraordinary creativity and a comprehensive design foundation. The
+            design composition involves basic drawing skills, mastery of 3D technology, and encompasses visual
+            communication, spatial concept design, music composition, film shooting, etc., providing people with a more
+            diverse and integrated new aesthetic sensory experience.</p>
+
+          <p>OUSVOW Studio: Now, please share the design philosophy behind this jewelry set worth 280000$ USD.</p>
+
+          <p>Designer RICHH OU: Firstly, the design inspiration for the elliptical ring shape of the necklace comes from
+            the fastest "speed of light" on Earth. If one could achieve the actual speed of light, the surrounding
+            scenes would appear almost static. So, I hand-drew the shape of light speed and transformed it into a
+            physical form, connecting them with rows of natural, non-fluorescent white diamonds to create the illusion
+            of "light rays." This design also represents the exclusive jewelry patent appearance of the brand worldwide,
+            echoing the first letter "O" of OUSVOW and holding a dual meaning. It has been registered for patent
+            copyright.</p>
+
+          <p>The pendant represents my image in the parallel four-dimensional space and is a member of the CITY jewelry
+            series. As a Chinese person with yellow skin, black eyes, and black hair, I showcase my personal style in
+            this piece. Since childhood, I have questioned everything known, possessing a rebellious trait against
+            mainstream culture. This also signifies my identity as part of the niche culture on Earth. Both the necklace
+            and pendant are crafted from solid 18k gold and platinum components, with a total weight of over 1 kilogram.
+            Due to my meticulous attention to detail, the initial design went through over a month of revisions, and I
+            supervised the craftsmen through several months of overtime work and multiple revisions to achieve my
+            satisfaction.</p>
+
+          <p>The pendant's back net is actually a painting I created, depicting an extraterrestrial higher intelligence
+            being wearing a heart-shaped helmet, piloting a superluminal spaceship to Earth. This being has appeared in
+            my dreams numerous times and, personally, I believe all human trajectories are predetermined by the creator.
+            From the age of 4, when I started drawing, to continually studying and researching aesthetics and related
+            knowledge, becoming a designer and establishing my unique style and aesthetic system, I feel gratified.
+            Hence, I wanted to turn the dream into reality by painting it and using it as the back net for this piece.
+          </p>
+
+          <p>I spent several days personally selecting each diamond through a magnifying glass to ensure uniform color,
+            clarity, and cut for all similar diamonds, maximizing the brilliance of the jewelry. It is adorned with
+            several tens of carats of natural, non-fluorescent F VS white diamonds, natural black diamonds, and natural
+            yellow diamonds. Using exquisite handcrafted super-dense inlaying techniques, there are no visible gaps
+            between the diamonds.</p>
+
+          <p>The two black eyes are inlaid with two hand-polished pieces of natural black agate. The detachable
+            mechanism of the pendant is also a patent I designed. When detached and placed on a table, it stands as a
+            jewelry sculpture of a humanoid from the parallel four-dimensional space, the CITY series. Essentially,
+            "Made in China" does not mean contemporary artisan spirit cannot produce artistic works, but it depends on
+            who designs, supervises, and controls quality.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# LANDING GOLD #}
+  <div class="landing__gold">
+    <div class="gold__wrapper">
+      <div class="gold__text">
+        <h2>100% Gold</h2>
+        <p>Lorem ipsum dolor sit amet consectetur. Dolor et volutpat in non. Luctus sit libero urna viverra sed non dui
+          elementum Dolor et volutpat in non. Luctus sit libero urna viverra .</p>
+      </div>
+      <div class="gold__image">
+        <img src="{% static 'img/landing/avbb.jpg' %}" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <section class="hero-video">
+    <!-- любой фон/текст... -->
+    <div class="hero-video__thumbs">
+      <button class="hero-video__play" data-yturl="https://youtube.com/shorts/zpHBbHwFHDM"><img
+          src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
+      <button class="hero-video__play" data-yturl="https://www.youtube.com/watch?v=eoRLoPYi73Y"><img
+          src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
+      <!-- добавляй сколько нужно -->
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="video-modal" id="videoModal" hidden>
+    <div class="video-modal__overlay" data-close></div>
+    <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-label="Video">
+      <button class="video-modal__close" data-close aria-label="Close">×</button>
+
+      <!-- Кнопки навигации по плейлисту -->
+      <button class="video-modal__nav video-modal__prev" data-prev aria-label="Previous">‹</button>
+      <button class="video-modal__nav video-modal__next" data-next aria-label="Next">›</button>
+
+      <div class="video-modal__player" id="videoPlayer"></div>
+    </div>
+  </div>
+
+  {# LANDING 3 Goods #}
+  {% if landing_three %}
+  <div class="landing__3element">
+    <div class="elements__wrapper">
+      {% for p in landing_three %}
+      <div class="elements-element">
+        <div class="elements-img">
+          {% with img=p.images.all|first %}
+          <a href="{{ p.get_absolute_url }}">
+            {% if img %}
+            <img src="{{ img.image.url }}" alt="{{ p.name }}" />
+            {% else %}
+            <img src="{% static 'img/placeholder.png' %}" alt="{{ p.name }}" />
+            {% endif %}
+          </a>
+          {% endwith %}
+        </div>
+        <div class="elements-desc">
+          <div class="elements-name">{{ p.name }}</div>
+          <div class="elements-price">{{ p.price }} $</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {# LANDING SIGN UP #}
+  <div class="langind__sing">
+    <div class="sing__wrapper">
+      <div class="sing__desc">
+        <h2>Get the Latest From Ousvow</h2>
+        <p>Be the first to hear about new arrivals, promotions, style inspiration and exclusive sneak peeks.</p>
+      </div>
+      <div class="sing__field">
+        <form action="#">
+          <input placeholder="Enter email address" type="text" />
+          <button>SING UP</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.landing__animation-track')
+    if (track && track.children.length === 1) {
+      track.appendChild(track.firstElementChild.cloneNode(true))
+    }
+  })
+</script>
+
+<script>
+    ; (function () {
       const modal = document.getElementById('videoModal')
       const slot = document.getElementById('videoPlayer')
       const btns = Array.from(document.querySelectorAll('.hero-video [data-yturl]')) // все триггеры на странице
       const prev = modal.querySelector('[data-prev]')
       const next = modal.querySelector('[data-next]')
-    
+
       if (!modal || !slot) return
-    
+
       // --- utils ---
       function getYouTubeId(url) {
         try {
@@ -304,7 +406,7 @@
           return null
         }
       }
-    
+
       function buildSrc(id) {
         const p = new URLSearchParams({
           autoplay: 1,
@@ -316,7 +418,7 @@
         // no-cookie домен, чтобы не плодить сторонние куки
         return `https://www.youtube-nocookie.com/embed/${id}?${p.toString()}`
       }
-    
+
       function mountIframe(id) {
         const iframe = document.createElement('iframe')
         iframe.src = buildSrc(id)
@@ -328,11 +430,11 @@
         slot.innerHTML = ''
         slot.appendChild(iframe)
       }
-    
+
       // --- playlist state ---
       const playlist = btns.map((el) => getYouTubeId(el.dataset.yturl)).filter(Boolean)
       let index = 0
-    
+
       function openAt(i) {
         index = i
         mountIframe(playlist[index])
@@ -342,37 +444,37 @@
         const hasMany = playlist.length > 1
         prev.hidden = next.hidden = !hasMany
       }
-    
+
       function closeModal() {
         modal.hidden = true
         slot.innerHTML = ''
         document.body.style.overflow = ''
       }
-    
+
       function nextVideo() {
         if (playlist.length < 2) return
         index = (index + 1) % playlist.length
         mountIframe(playlist[index])
       }
-    
+
       function prevVideo() {
         if (playlist.length < 2) return
         index = (index - 1 + playlist.length) % playlist.length
         mountIframe(playlist[index])
       }
-    
+
       // --- events ---
       btns.forEach((btn, i) => {
         btn.addEventListener('click', () => openAt(i))
       })
-    
+
       modal.addEventListener('click', (e) => {
         if (e.target.hasAttribute('data-close')) closeModal()
       })
-    
+
       prev.addEventListener('click', prevVideo)
       next.addEventListener('click', nextVideo)
-    
+
       window.addEventListener('keydown', (e) => {
         if (modal.hidden) return
         if (e.key === 'Escape') closeModal()
@@ -380,17 +482,17 @@
         if (e.key === 'ArrowLeft') prevVideo()
       })
     })()
-  </script>
+</script>
 
-  <script>
-    ;(function () {
+<script>
+    ; (function () {
       const openBtn = document.getElementById('openConcept')
       const modal = document.getElementById('conceptModal')
       if (!openBtn || !modal) return
-    
+
       const dialog = modal.querySelector('.concept-modal__dialog')
       let lastFocus = null
-    
+
       function openModal() {
         lastFocus = document.activeElement
         modal.hidden = false
@@ -403,7 +505,7 @@
         document.body.style.overflow = ''
         if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus()
       }
-    
+
       openBtn.addEventListener('click', openModal)
       modal.addEventListener('click', (e) => {
         if (e.target.hasAttribute('data-close')) closeModal()
@@ -412,5 +514,5 @@
         if (e.key === 'Escape' && !modal.hidden) closeModal()
       })
     })()
-  </script>
+</script>
 {% endblock %}
