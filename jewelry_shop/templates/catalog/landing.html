@@ -107,7 +107,6 @@ page-landing
       <div class="collections__text">
         <h2>Jewelry product lines tells eternal stories</h2>
         <div class="collections__text-container">
-          <p>Test Collection</p>
           <p>City</p>
           <p>Jade</p>
           <p>Future</p>
@@ -297,8 +296,8 @@ page-landing
     <div class="gold__wrapper">
       <div class="gold__text">
         <h2>100% Gold</h2>
-        <p>Lorem ipsum dolor sit amet consectetur. Dolor et volutpat in non. Luctus sit libero urna viverra sed non dui
-          elementum Dolor et volutpat in non. Luctus sit libero urna viverra .</p>
+        <p>Made exclusively with 10k, 14k and 18k solid gold, our jewelry shines with rich history,
+           high value and the ability to withstand time and wear.</p>
       </div>
       <div class="gold__image">
         <img src="{% static 'img/landing/avbb.jpg' %}" alt="" />
@@ -306,16 +305,14 @@ page-landing
     </div>
   </div>
 
-  <section class="hero-video">
-    <!-- любой фон/текст... -->
-    <div class="hero-video__thumbs">
-      <button class="hero-video__play" data-yturl="https://youtube.com/shorts/zpHBbHwFHDM"><img
-          src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
-      <button class="hero-video__play" data-yturl="https://www.youtube.com/watch?v=eoRLoPYi73Y"><img
-          src="{% static 'img/landing/button-video.svg' %}" alt="" /></button>
-      <!-- добавляй сколько нужно -->
-    </div>
-  </section>
+<section class="hero-video">
+  <div class="hero-video__thumbs">
+    <a class="hero-video__play" href="https://www.youtube.com/@richhou6969/videos" target="_blank" rel="noopener">
+      <img src="{% static 'img/landing/button-video.svg' %}" alt="Watch video">
+    </a>
+  </div>
+</section>
+
 
   <!-- Modal -->
   <div class="video-modal" id="videoModal" hidden>
