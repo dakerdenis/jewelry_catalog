@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Catalog — OUSVOW JEWELRY{% endblock %}
+{% block extra_css %}
+<link href="{% static 'css/pages/catalog.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="catalog__wrapper">
+  {# CATALOG MAIN IMAGE #}
+  <div style="display: none;" class="catalog__image">
+    <div class="catalog__image-name">
+      <h2>OUSVOW JEWELRY</h2>
+      <p>Lorem ipsum dolor sit amet consectetur. Sed commodo pellentesque arcu tristique et morbi.</p>
+    </div>
+    <div class="catalog__image-img">
+      <img src="{% static 'img/catalog/back.jpg' %}" alt="" />
+    </div>
+  </div>
+
+  {# MAIN content #}
+  <div class="catalog__container">
+    <div class="catalog__container-results">
+      <span>{{ total_results }} Results</span>
+      {% if selected_collections %}
+      <a href="{% url 'catalog:list' %}" class="catalog__clear">Clear filters</a>
+      {% endif %}
+    </div>
+
+    {# FILTER + RESULTS #}
+    <div class="catalog__container-wrapper">
+
+      {# === FILTERS === #}
+      <aside class="catalog__filter">
+        <form id="filterForm" method="get" class="js-filter">
+      
+          {# -- Collections -- #}
+          <div class="catalog__filter-element">
+            <div class="catalog__filter-line"></div>
+            <p>Collection</p>
+      
+            {% for c in collections %}
+              {% if c.product_count > 0 %}
+              <div class="catalog__filter__small">
+                <div class="chk">
+                  <input
+                    type="checkbox"
+                    class="chk__input"
+                    id="col-{{ c.slug }}"
+                    name="collection"
+                    value="{{ c.slug }}"
+                    {% if c.slug in selected_collections %}checked{% endif %}
+                  >
+                  <label for="col-{{ c.slug }}" class="chk__label">
+                    <span class="chk__box" aria-hidden="true"></span>
+                    {{ c.name }} <span>({{ c.product_count }})</span>
+                  </label>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+      
+          {# -- Category (global) -- #}
+          <div class="catalog__filter-element">
+            <div class="catalog__filter-line"></div>
+            <p>Category</p>
+          
+            {% for cat in categories %}
+              {% if cat.product_count > 0 %}
+              <div class="catalog__filter__small">
+                <div class="chk">
+                  <input
+                    type="checkbox"
+                    class="chk__input"
+                    id="cat-{{ cat.slug }}"
+                    name="category"
+                    value="{{ cat.slug }}"
+                    {% if cat.slug in selected_categories %}checked{% endif %}
+                  >
+                  <label for="cat-{{ cat.slug }}" class="chk__label">
+                    <span class="chk__box" aria-hidden="true"></span>
+                    {{ cat.name }} <span>({{ cat.product_count }})</span>
+                  </label>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          
+      
+        </form>
+      </aside>
+      
+
+      {# === RESULTS === #}
+      <div class="catalog__results">
+        {% if products %}
+        {% for p in products %}
+        <a class="catalog__element" href="{{ p.get_absolute_url }}">
+          <div class="catalog__element-img">
+            {% with img=p.images.all|first %}
+            {% if img %}
+            <img src="{{ img.image.url }}" alt="{{ p.name }}">
+            {% else %}
+            <img src="{% static 'img/catalog/catalog-placeholder.png' %}" alt="{{ p.name }}">
+            {% endif %}
+            {% endwith %}
+          </div>
+          <h4>{{ p.name }}</h4>
+          <p>{{ p.price }} $</p>
+        </a>
+        {% endfor %}
+        {% else %}
+        <p>No products found.</p>
+        {% endif %}
+      </div>
+      {# ---- #}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  (function(){
+    const form = document.getElementById('filterForm');
+    if (!form) return;
+    form.addEventListener('change', function(e){
+      if (e.target && (e.target.name === 'collection' || e.target.name === 'category')) {
+        form.submit();
+      }
+    });
+  })();
+</script>
+{% endblock %}

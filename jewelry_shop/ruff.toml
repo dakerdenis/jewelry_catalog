@@ -1,0 +1,19 @@
+line-length = 120
+target-version = "py313"
+
+exclude = [
+    ".venv",
+    "migrations",
+    "*/migrations/*",
+    "static",
+    "media",
+]
+
+[lint]
+select = ["E", "F", "W", "I"]
+ignore = [
+    "E501",
+    "F401",
+    "F403",
+    "F405",
+]

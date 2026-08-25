@@ -1,0 +1,488 @@
+.product__wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.product__container {
+  width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product__images {
+  width: 904px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product__image {
+  width: 430px;
+  height: 430px;
+  margin-bottom: 46px;
+  background-color: #e3e3e3;
+  box-shadow: 1px 1px 8px #00000018;
+}
+
+.product__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__image-last {
+}
+
+.product__description {
+  width: calc(100% - 904px - 42px);
+  max-width: 381px;
+}
+
+.product__contact__button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  width: 381px;
+  height: 52px;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+
+  font-size: 16px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  cursor: pointer;
+}
+
+.product__contact__button a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.product__desc-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+
+  font-size: 30px;
+
+  line-height: 60px;
+  letter-spacing: 0.5px;
+
+  color: #1e1e1e;
+}
+
+.product__desc-price {
+  margin-top: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+
+  font-size: 20px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #717171;
+}
+
+.product__desc-material {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 25px;
+
+  line-height: 40px;
+  letter-spacing: 0.5px;
+  color: #1e1e1e;
+  border-top: 1px solid #1e1e1e;
+  margin-top: 15px;
+  padding-top: 5px;
+}
+
+.product__desc-info {
+}
+
+/**?? SIMILAR PRODUCT*************/
+.product__similar {
+  margin-top: 90px;
+  width: 1222px;
+  margin: 0 auto;
+}
+
+.product__similar h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 25px;
+
+  line-height: 60px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.product__similar__wrapper {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.product__similar-element {
+  width: 262px;
+  height: 350px;
+  box-shadow: 1px 1px 8px #00000018;
+  position: relative;
+}
+
+.product__similar-image {
+  position: absolute;
+  z-index: 100;
+}
+.product__similar-image a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product__similar-image a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.product__similar-view {
+  z-index: 200;
+  position: absolute;
+  width: 221px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+
+  font-size: 16px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+
+  text-decoration-thickness: 0%;
+  bottom: 23px;
+  left: calc(50% - 110.5px);
+
+  color: #1e1e1e;
+}
+
+/**? PRODUCT COLLECTION******/
+.product__collection {
+  width: 1105px;
+  height: 550px;
+  margin: 0 auto;
+}
+
+.product__collection-wrapper {
+  margin-top: 143px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product__collection-image {
+  height: 550px;
+  width: 550px;
+  background-color: #e3e3e3;
+}
+
+.product__collection-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product__collection-desc {
+  width: 452px;
+}
+
+.product__collection-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 40px;
+  letter-spacing: 0.5px;
+}
+
+.product__collection-name {
+  font-family: 'Noto Serif', serif;
+  font-weight: 500;
+
+  font-size: 60px;
+
+  line-height: 105px;
+  letter-spacing: 0%;
+}
+
+.product__collection-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+
+  line-height: 40px;
+  letter-spacing: 0%;
+}
+
+/* контейнер */
+.acc {
+  margin-top: 24px;
+}
+
+/* элемент и разделительные линии */
+.acc__item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.acc__item:first-child {
+  border-top: 1px solid #e5e5e5;
+}
+
+/* заголовок */
+.acc__header {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+
+.acc__header::-webkit-details-marker {
+  display: none;
+}
+
+/* плюс/минус */
+.acc__icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.acc__icon::before,
+.acc__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: #3a3a3a;
+  transform: translateY(-50%);
+  transition: transform 0.25s ease;
+}
+
+.acc__icon::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* вертикальная черта */
+details[open] .acc__icon::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* превращаем в минус */
+
+/* панель с анимацией раскрытия */
+.acc__panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+details[open] .acc__panel {
+  max-height: 800px;
+}
+
+/* достаточно большое значение */
+details[open] .acc__panel > * {
+  animation: accFade 0.25s ease;
+}
+
+@keyframes accFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* описание характеристик */
+.pd {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  column-gap: 16px;
+  row-gap: 10px;
+  margin: 0 0 16px;
+}
+
+.pd dt {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #6b6b6b;
+  text-transform: uppercase;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.pd dd {
+  margin: 0;
+  color: #1e1e1e;
+  font-weight: 500;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.pd__descr {
+  color: #333;
+  margin: 4px 0 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.pd__row {
+  margin: 8px 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 150%;
+}
+
+.acc__link {
+  color: #1e1e1e;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 1370px) {
+  .product__wrapper {
+    width: 1100px;
+    max-width: initial;
+  }
+  .product__container {
+    width: 100%;
+  }
+
+  .product__images {
+    width: 640px;
+  }
+  .product__image {
+    width: 300px;
+    height: 300px;
+  }
+  .product__description {
+    width: 380px;
+  }
+  .product__collection-text {
+    font-size: 24px;
+  }
+
+  .product__collection-name {
+    font-size: 56px;
+    line-height: 87px;
+  }
+  .product__collection-description {
+    font-size: 15px;
+    line-height: 33px;
+  }
+  .product__similar {
+    width: 100%;
+  }
+  .product__similar-element {
+    width: 230px;
+    height: 330px;
+  }
+  .product__collection-image {
+    height: 450px;
+    width: 450px;
+    background-color: #e3e3e3;
+  }
+}
+@media (max-width: 900px) {
+  .product__wrapper {
+    width: 100%;
+    margin-top: 60px;
+  }
+  .product__container {
+    width: 90%;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+  .product__similar__wrapper {
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .product__similar-element {
+    width: 155px;
+    height: 230px;
+  }
+  .product__similar-view {
+    width: 130px;
+    left: calc(50% - 65px);
+  }
+  .product__collection {
+    width: 90%;
+    height: initial;
+    margin: 0 auto;
+  }
+  .product__images {
+    width: 100%;
+  }
+  .product__image {
+    width: 170px;
+    height: 190px;
+    background-color: initial;
+  }
+  .product__image img {
+    object-fit: contain;
+  }
+  .product__collection-wrapper {
+    flex-direction: column;
+  }
+  .product__collection-image {
+    width: 100%;
+    height: 330px;
+            background-color: initial;
+  }
+  .product__collection-desc{
+    width: 100%;
+  }
+  .product__collection-name {
+    font-size: 50px;
+    line-height: 79px;
+  }
+  .pd__descr{
+    line-height: 23px;
+  }
+  .product__similar-element{
+    margin-bottom: 10px;
+  }
+}

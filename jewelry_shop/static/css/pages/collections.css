@@ -1,0 +1,98 @@
+/* Контейнер страницы */
+.collections {
+  width: min(1200px, 92%);
+  margin: 40px auto 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 96px; /* расстояние между рядами */
+}
+
+/* Ряд коллекции: 2 колонки */
+.col-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+}
+
+/* Чередование: у чётных рядов «разворачиваем» визуальный порядок */
+.col-row.is-reversed {
+  direction: rtl;
+}
+.col-row.is-reversed > * {
+  direction: ltr;
+}
+
+/* Картинка коллекции */
+.col-row__image img {
+  display: block;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 420px; /* не даём разрастись слишком сильно */
+  max-height: 420px;
+  object-fit: contain;
+}
+
+/* Текстовый блок */
+.col-row__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.1;
+  margin: 0 0 12px;
+  color: #1e1e1e;
+}
+.col-row__desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #333;
+  line-height: 1.7;
+  margin: 0 0 16px;
+  max-width: 60ch; /* приятная длина строки */
+}
+.col-row__meta {
+  font-weight: 600;
+  color: #1e1e1e;
+  margin-bottom: 16px;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-block;
+
+
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1e1e1e;
+  transition: transform 0.12s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  font-size: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #1e1e1e;
+
+}
+.btn + .btn {
+
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .col-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .col-row.is-reversed {
+    direction: ltr;
+  }
+  .col-row__image img {
+    max-width: 360px;
+    max-height: 360px;
+  }
+}
